@@ -1,0 +1,52 @@
+{
+  "name": "e-tarjeta",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "axios": "^0.18.0",
+    "bcrypt": "^3.0.4",
+    "compression": "^1.7.3",
+    "connect-mongo": "^2.0.3",
+    "connected-react-router": "^6.3.2",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.19",
+    "morgan": "^1.9.1",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.10",
+    "notistack": "^0.5.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-jss": "^8.6.1",
+    "react-redux": "^6.0.1",
+    "react-scripts": "2.1.8",
+    "redux": "^4.0.1",
+    "redux-form": "^8.1.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  }
+}
