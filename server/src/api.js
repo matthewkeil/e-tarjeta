@@ -14,7 +14,7 @@ const passport = require('./passport');
 const authRouter = require('./routes/auth.router');
 
 const PROD = process.env.NODE_ENV === 'production';
-const SESSION_SECRET = process.env.SESSION_SECRET || 'very_bad-$ession$ecret';
+const SESSION_SECRET = process.env.SESSION_SECRET || 'Terrible_Session_Secret';
 
 api.use(helmet());
 

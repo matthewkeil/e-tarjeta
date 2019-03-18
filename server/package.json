@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "dev": "nodemon src --delay 1000 --watch src"
   },
   "nodemonConfig": {
     "delay": 1000,
@@ -19,6 +20,7 @@
     "compression": "^1.7.3",
     "connect-mongo": "^2.0.3",
     "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "helmet": "^3.16.0",
@@ -26,8 +28,8 @@
     "mongoose": "^5.4.19",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10",
-    "passport-google-oauth20": "^2.0.0",
     "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0"
   }
 }
