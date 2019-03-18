@@ -68,7 +68,7 @@ const Login = props => (
       ))}
     </ul>
   </CardLayout>
-);7n
+);
 
 const mapState = state => {
   const selector = formValueSelector("login");
