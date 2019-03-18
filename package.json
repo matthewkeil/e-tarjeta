@@ -2,7 +2,8 @@
   "name": "e-tarjeta",
   "version": "1.0.0",
   "description": "En Línea Carnet Materno Parinatal - an open source project - by Jack Fischer and Matthew Keil",
-  "main": "index.js",
+  "author": "Jack Fischer and Matthew Keil",
+  "license": "MIT",
   "scripts": {
     "dev:client": "cd client && npm run dev",
     "dev:server": "cd server && npm run dev",
@@ -12,9 +13,6 @@
     "type": "git",
     "url": "git+https://github.com/matthewkeil/e-tarjeta.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/matthewkeil/e-tarjeta/issues"
   },
