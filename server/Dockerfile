@@ -1,13 +1,12 @@
 FROM node:alpine
 
-WORKDIR /usr/app/graphql
+WORKDIR /usr/app/api
 
 RUN apk add --no-cache --virtual .build-deps make gcc g++ python \
 	&& npm install bcrypt \
-	&& apk del .build-deps \
-	&& npm install pm2 -g
+	&& apk del .build-deps 
 
-COPY ./package.json ./package-lock.json ./tsconfig.json /
+COPY ./package.json ./package-lock.json /
 
 RUN npm install --no-optional
 
@@ -15,4 +14,4 @@ COPY ./src/ src/
 
 EXPOSE 4000
 
-CMD [ "pm2", "start", "process.yaml" ]
+CMD [ "nodemon", "src" ]

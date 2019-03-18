@@ -1,22 +1,15 @@
 {
   "name": "e-tarjeta-server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon",
-    "dev": "nodemon src --delay 1000 --watch src"
+    "start": "nodemon src",
+    "dev": "nodemon src --delay 1000 --watch src --ignore node_modules"
   },
-  "nodemonConfig": {
-    "delay": 1000,
-    "watch": "api",
-    "ignore": "node_modules"
+  "optionalDependencies": {
+    "bcrypt": "^3.0.4"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.4",
     "compression": "^1.7.3",
     "connect-mongo": "^2.0.3",
     "cors": "^2.8.5",
