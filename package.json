@@ -5,7 +5,7 @@
   "author": "Jack Fischer and Matthew Keil",
   "license": "MIT",
   "scripts": {
-    "dev:client": "cd client && npm run start",
+    "dev:client": "cd client && npm start",
     "dev:server": "cd server && npm run dev",
     "start": "npm run dev:client & npm run dev:server"
   },
