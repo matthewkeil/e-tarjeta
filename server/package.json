@@ -1,0 +1,33 @@
+{
+  "name": "e-tarjeta-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "nodemonConfig": {
+    "delay": 1000,
+    "watch": "api",
+    "ignore": "node_modules"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.4",
+    "compression": "^1.7.3",
+    "connect-mongo": "^2.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.19",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.10",
+    "passport-google-oauth20": "^2.0.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}
