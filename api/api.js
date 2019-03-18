@@ -12,8 +12,6 @@ const MongoStore = require('connect-mongo')(session);
 const db = require('./db');
 const passport = require('./passport');
 const authRouter = require('./routes/auth.router');
-const recipesRouter = require('./routes/recipes.router');
-const ingredientsRouter = require('./routes/ingredients.router');
 
 const PROD = process.env.NODE_ENV === 'production';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'very_bad-$ession$ecret';
@@ -54,8 +52,6 @@ if (PROD) {
 }
 
 api.use('/auth', authRouter);
-api.use('/recipes', recipesRouter);
-api.use('/ingredients', ingredientsRouter);
 
 api.use((err, req, res, next) => {
   console.error(`>>>> error handler\n\n${err}\n\n>>>> error handler`);
