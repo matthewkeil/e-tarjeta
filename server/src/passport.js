@@ -1,6 +1,6 @@
 const passport = require("passport");
-const ExtractJwt = require("passport-jwt").ExtractJwt;
-const JwtStrategy = require("passport-jwt").Strategy;
+// const ExtractJwt = require("passport-jwt").ExtractJwt;
+// const JwtStrategy = require("passport-jwt").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const {User} = require("./models");
@@ -35,20 +35,20 @@ passport.deserializeUser(async function(id, done) {
  *
  *
  */
-const JWT_SECRET = process.env.JWT_SECRET || "very_bad-JTW=$ecret";
-const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: JWT_SECRET
-};
+// const JWT_SECRET = process.env.JWT_SECRET || "very_bad-JTW=$ecret";
+// const jwtOptions = {
+//   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+//   secretOrKey: JWT_SECRET
+// };
 
-passport.use(
-  new JwtStrategy(jwtOptions, function(token, done) {
-    User.findById(token._id, (err, user) => {
-      if (err) done(err);
-      if (user) return done(null, user);
-    });
-  })
-);
+// passport.use(
+//   new JwtStrategy(jwtOptions, function(token, done) {
+//     User.findById(token._id, (err, user) => {
+//       if (err) done(err);
+//       if (user) return done(null, user);
+//     });
+//   })
+// );
 
 /**
  *

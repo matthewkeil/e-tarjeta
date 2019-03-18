@@ -3,8 +3,8 @@ require('dotenv').config();
 const morgan = require('morgan');
 const api = require('./api');
 
-const HOST = process.env.HOST || "bougie.haus";
-const PORT = process.env.API_PORT || process.env.PORT;
+const HOST = process.env.HOST || "localhost";
+const PORT = process.env.PORT || 4000;
 
 api.use(morgan('dev'));
 

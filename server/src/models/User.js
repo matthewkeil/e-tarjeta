@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = process.env.JWT_SECRET || "very_bad-JTW=$ecret";
+const JWT_SECRET = process.env.JWT_SECRET || "Terrible_Jwt_Secret";
 
 const Schema = mongoose.Schema;
 

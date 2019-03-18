@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 
-const username = process.env.MONGO_USERNAME || "DevServer";
-const password = process.env.MONGO_PASSWORD || "BougieHaus1!";
-const host = process.env.MONGO_HOST || "ds251588.mlab.com";
-const port = process.env.MONGO_PORT || 51588;
-const dbName = process.env.MONGO_DBNAME || "dev-bougie-haus";
+const username = process.env.MONGO_USERNAME || "dev-server-matt";
+const password = process.env.MONGO_PASSWORD || "dev-server-matt-0";
+const host = process.env.MONGO_HOST || "ds225028.mlab.com";
+const port = process.env.MONGO_PORT || 25028;
+const dbName = process.env.MONGO_DBNAME || "e-tarjeta-dev";
+
 
 const uri = `mongodb://${username}:${password}@${host}:${port}/${dbName}`;
 
