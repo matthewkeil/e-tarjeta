@@ -4,6 +4,8 @@ import Notifier from "./core/Notifier";
 
 import Register from './auth/Register';
 
+import Appointments from './core/Appointments';
+
 import styles from "./App.module.scss";
 
 const App = () => (
@@ -12,6 +14,7 @@ const App = () => (
 
     <Switch>
       <Route path="/" exact render={() => <Register />} />
+      <Route path='/test' exact render={() => <Appointments />} />
       {/* <Route path="/auth/register" component={Register} /> */}
       {/* <Route path="/auth/login" exact component={Login} /> */}
     </Switch>
