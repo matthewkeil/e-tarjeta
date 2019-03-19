@@ -1,7 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router";
 import Notifier from "./core/Notifier";
-import ProgressMobileStepper from './stepper';
+
+import Register from './auth/Register';
 
 import styles from "./App.module.scss";
 
@@ -10,7 +11,7 @@ const App = () => (
     <Notifier />
 
     <Switch>
-      <Route path="/" exact render={() => <ProgressMobileStepper />} />
+      <Route path="/" exact render={() => <Register />} />
       {/* <Route path="/auth/register" component={Register} /> */}
       {/* <Route path="/auth/login" exact component={Login} /> */}
     </Switch>
