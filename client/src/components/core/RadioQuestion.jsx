@@ -7,12 +7,13 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
+
 const renderRadioField = ({
   children,
   meta: { touched, error, warning },
   input,
   name,
-  blur,
+  onBlur,
   warnClassName,
   errorClassName
   // formLabelClassName,
@@ -26,7 +27,7 @@ const renderRadioField = ({
     value={input.value}
     onChange={(event, value) => input.onChange(value)}
     name={name}
-    onBlur={blur}
+    onBlur={onBlur}
   >
     {children}
     {touched &&

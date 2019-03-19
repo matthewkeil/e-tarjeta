@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
-import RadioQuestion from "../core/RadioQuestion";
+import DateQuestion from "../core/DateQuestion";
 
 function mapStateToProps(state) {
   return {};
@@ -47,11 +47,15 @@ class Register extends Component {
     }
   ];
 
+  onBlur = () => {
+      console.log('blur');
+  }
+
   render() {
     return (
       <form>
         {this.questions.map(({ label, question, answers, id }) => (
-          <RadioQuestion errorClassName="booger" name={question} label={question} answerButtons={answers} />
+          <DateQuestion name={question} label={question} onBlur={this.onBlur}/>
         ))}
       </form>
     );
