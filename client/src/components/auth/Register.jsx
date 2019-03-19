@@ -51,7 +51,7 @@ class Register extends Component {
     return (
       <form>
         {this.questions.map(({ label, question, answers, id }) => (
-          <RadioQuestion label={question} buttons={answers}/>
+          <RadioQuestion errorClassName="booger" name={question} label={question} answerButtons={answers} />
         ))}
       </form>
     );
@@ -59,7 +59,7 @@ class Register extends Component {
 }
 
 export default connect(mapStateToProps)(
-    reduxForm({
-      form: "register"
-    })(Register)
-    );
+  reduxForm({
+    form: "register"
+  })(Register)
+);

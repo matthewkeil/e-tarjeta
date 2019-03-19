@@ -7,78 +7,80 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
-function renderRadioField({
+const renderRadioField = ({
+  children,
   meta: { touched, error, warning },
-  //   fullWidth,
-  warnClassName,
-  errorClassName,
-  formLabelClassName,
-  formLabelPassedClasses,
-  formControlClassName,
-  formControlPassedClasses,
-  radioButtonClassName,
-  radioButtonPassedClasses,
+  input,
   name,
-  label,
-  buttons,
   blur,
-  ...custom
-}) {
-  return (
-    <FormControl
-      component="fieldset"
-      className={formControlClassName}
-      classes={formControlPassedClasses}
-      error={error}
-    >
-      <FormLabel component="legend" classes={formLabelPassedClasses}>
-        {label}
-      </FormLabel>
-      <RadioGroup name={name} onBlur={blur} {...custom}>
-        {buttons.map((label) => (
-          <FormControlLabel
-            control={
-              <Radio
-                className={radioButtonClassName}
-                classes={radioButtonPassedClasses}
-              />
-            }
-            value={label}
-            label={label}
-          />
-        ))}
-      </RadioGroup>
-      {touched &&
-        ((error && (
-          <FormHelperText className={errorClassName}>{error}</FormHelperText>
-        )) ||
-          (warning && (
-            <FormHelperText className={warnClassName}>{warning}</FormHelperText>
-          )))}
-    </FormControl>
-  );
-}
+  warnClassName,
+  errorClassName
+  // formLabelClassName,
+  // formLabelPassedClasses,
+  // formControlClassName,
+  // formControlPassedClasses,
+  // radioButtonClassName,
+  // radioButtonPassedClasses,
+}) => (
+  <RadioGroup
+    value={input.value}
+    onChange={(event, value) => input.onChange(value)}
+    name={name}
+    onBlur={blur}
+  >
+    {children}
+    {touched &&
+      ((error && (
+        <FormHelperText className={errorClassName}>{error}</FormHelperText>
+      )) ||
+        (warning && (
+          <FormHelperText className={warnClassName}>{warning}</FormHelperText>
+        )))}
+  </RadioGroup>
+);
 
 export default ({
-  //   fullWidth,
-  //   warnClassName,
-  //   errorClassName,
+  fullWidth,
   formControlClassName,
-  radioGroupClassName,
-  radioButtonClassName,
-  name,
   label,
-  buttons,
-  blur,
+  name,
+  answerButtons,
+  onBlur,
+  warnClassName,
+  errorClassName,
+
+  // classes,
+  // radioGroupClassName,
+  // radioButtonClassName,
+
   ...custom
 }) => (
-  <Field
-    name={name}
-    label={label ? label : name}
-    buttons={buttons}
-    // fullWidth={fullWidth}
-    component={renderRadioField}
-    // onKeyDown={catchEnter}
-    // onBlur={getTitleInfo(url)}
-  />
+  <FormControl
+    component="fieldset"
+    fullWidth={fullWidth}
+    className={formControlClassName}
+    // classes={{ ...classes.formControl }}
+  >
+    <FormLabel component="legend">{label}</FormLabel>
+    <Field
+      name={name}
+      component={renderRadioField}
+      onBlur={onBlur}
+      warnClassName={warnClassName}
+      errorClassName={errorClassName}
+    >
+      {answerButtons.map(label => (
+        <FormControlLabel
+          control={
+            <Radio
+            // className={radioButtonClassName}
+            // classes={radioButtonPassedClasses}
+            />
+          }
+          value={label}
+          label={label}
+        />
+      ))}
+    </Field>
+  </FormControl>
 );
