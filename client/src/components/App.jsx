@@ -14,7 +14,7 @@ const App = () => (
 
     <Switch>
       <Route path="/" exact render={() => <Register />} />
-      <Route path='/test' exact render={() => <Appointments />} />
+      <Route path='/appointments' exact render={() => <Appointments />} />
       {/* <Route path="/auth/register" component={Register} /> */}
       {/* <Route path="/auth/login" exact component={Login} /> */}
     </Switch>
