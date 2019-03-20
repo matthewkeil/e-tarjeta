@@ -1,68 +1,62 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
-import DateQuestion from "../core/DateQuestion";
 
-function mapStateToProps(state) {
-  return {};
-}
-
-// function mapDispatchToProps(dispatch) {
-//     return {
-
-//     };
-// }
-
-const TYPE = {
-  RADIO: "RADIO",
-  BOOLEAN: "BOOLEAN",
-  TEXT: "TEXT",
-  TEXTAREA: "TEXTAREA",
-  DATE: "DATE"
-};
-
-// const FORM_STATE = {
-//     PRISTINE: 'PRISTINE',
-//     TOUCHED: 'TOUCHED',
-//     DIRTY: 'DIRTY',
-//     SUBMITTED: 'SUBMITTED',
-//     SUBMITTED_SUCCEEDED: 'SUBMIT_SUCCEEDED'
-// }
+import { ACT } from "../../store";
+import { DateQuestion } from "../core";
 
 class Register extends Component {
-  questions = [
-    {
-      id: "booger1234",
-      type: TYPE.RADIO,
-      label: "",
-      question: "Fracaso Metodo Anticoncepcion",
-      answers: [
-        "no usaba",
-        "barrera",
-        "DIU",
-        "horomonal",
-        "emergencia",
-        "natural"
-      ]
-    }
-  ];
+  // questions = [
+  //   {
+  //     id: "booger1234",
+  //     type: TYPE.RADIO,
+  //     label: "",
+  //     question: "Fracaso Metodo Anticoncepcion",
+  //     answers: [
+  //       "no usaba",
+  //       "barrera",
+  //       "DIU",
+  //       "horomonal",
+  //       "emergencia",
+  //       "natural"
+  //     ]
+  //   }
+  // ];
 
-  onBlur = () => {
-      console.log('blur');
+  componentDidMount() {
+    this.props.attemptGetQuestions();
   }
 
   render() {
-    return (
+    return !this.props.questions.length ? (
+      <h1>hello</h1>
+    ) : (
       <form>
         {this.questions.map(({ label, question, answers, id }) => (
-          <DateQuestion name={question} label={question} onBlur={this.onBlur}/>
+          <DateQuestion name={question} label={question} onBlur={this.onBlur} />
         ))}
       </form>
     );
   }
 }
 
-export default connect(mapStateToProps)(
+function mapStateToProps(state) {
+  return {
+    questions: state.clients.questions,
+    types: state.clients.types
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    attemptGetQuestions: () => dispatch(ACT.clients.attemptGetQuestions())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
   reduxForm({
     form: "register"
   })(Register)

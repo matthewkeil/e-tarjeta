@@ -13,6 +13,7 @@ const db = require('./db');
 const passport = require('./passport');
 const authRouter = require('./routes/auth.router');
 const appointmentRouter = require('./routes/appointments.router');
+const clientsRouter = require('./routes/clients.router');
 
 const PROD = process.env.NODE_ENV === 'production';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'Terrible_Session_Secret';
@@ -52,6 +53,8 @@ if (PROD) {
     api.use(compression());    
 }
 
+
+api.use('/clients', clientsRouter);
 api.use('/auth', authRouter);
 api.use('/', appointmentRouter);
 

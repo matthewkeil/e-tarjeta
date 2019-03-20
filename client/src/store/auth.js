@@ -24,8 +24,17 @@ const attemptLogin = (email, password) => dispatch =>
         dispatch(routerActions.push("/users/" + data._id));
       }
     ).catch(err => console.error(err));
-
+   
 export const authActions = {
   attemptLogin,
   login
 };
+
+export const authReducer = (state, action) => {
+  switch(action.type) {
+      case AUTH_ACTIONS.LOGIN:
+          return {...action.user}
+      default:
+          return {...state}
+  }
+}

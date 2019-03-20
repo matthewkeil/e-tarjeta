@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src",
-    "dev": "nodemon src --delay 1000 --watch src --ignore node_modules"
+    "prod": "nodemon src",
+    "start": "nodemon src --delay 1000 --watch src --ignore node_modules"
   },
   "optionalDependencies": {
     "bcrypt": "^3.0.4"

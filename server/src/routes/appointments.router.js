@@ -1,6 +1,7 @@
 const Router = require("express").Router;
 const appointmentRouter = Router();
 
+
 const TEST_APPOINTMENTS = [
   {
     date: 'TIME DD/MM/YYYY',

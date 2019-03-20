@@ -1,11 +1,13 @@
 import { routerActions as router } from 'connected-react-router';
 import { snackbarActions as snackbar } from './snackbar';
-import { authActions as auth } from './auth/auth.actions';
-import {appointmentActions as appointments} from './appointments/appointment.actions';
+import { authActions as auth } from './auth';
+import { clientsActions as clients } from './clients';
+import { appointmentsActions as appointments } from './appointments';
 
 export const ACT = {
     router,
     snackbar,
     auth,
-    appointments
+    appointments,
+    clients
 };

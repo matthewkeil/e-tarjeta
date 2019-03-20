@@ -29,7 +29,17 @@ const attemptGetAppointments = dispatch => {
 
 
 
-export const appointmentActions = {
+export const appointmentsActions = {
   attemptGetAppointments,
   getAppointments
 };
+
+export const appointmentsReducer = (state = [], action) => {
+    switch(action.type) {
+        case APPOINTMENT_ACTIONS.GET_ALL_APPOINTMENTS:
+        console.log(action)
+            return [...action.appointments.appointments]
+        default:
+            return {...state}
+    }
+}
