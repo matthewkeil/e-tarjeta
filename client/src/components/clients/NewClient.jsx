@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 
 import { ACT } from "../../store";
-import { DateQuestion } from "../core";
+import { DateQuestion, TextQuestion, RadioQuestion } from "../core";
 
+import {TYPES} from './question_types';
+ 
 class Register extends Component {
   // questions = [
   //   {
@@ -32,9 +34,27 @@ class Register extends Component {
       <h1>hello</h1>
     ) : (
       <form>
-        {this.questions.map(({ label, question, answers, id }) => (
-          <DateQuestion name={question} label={question} onBlur={this.onBlur} />
-        ))}
+        {this.props.questions.map(({type, name, label, answers}) => {
+          switch (type) {
+            case TYPES.TEXTAREA:
+              return <h1>TextArea</h1>;
+            case TYPES.RADIO:
+              return (<RadioQuestion name={name} label={label} answers={answers} />)
+            case TYPES.BOOLEAN:
+              return <h1>Boolean</h1>;
+            case TYPES.DATE:
+              return (
+                <DateQuestion
+                  name={name}
+                  label={label}
+                  onBlur={this.onBlur}
+                />
+              );
+            case TYPES.TEXT:
+            default:
+              return (<TextQuestion name={name} label={label} />);
+          }
+        })}
       </form>
     );
   }

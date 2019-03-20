@@ -24,7 +24,7 @@ export { actions as clientsActions, ACTIONS as CLIENTS_ACTIONS };
 
 const INITIAL_STATE = {
     questions: [],
-    types: []
+    types: {}
 }
 
 export const clientsReducer = (state = INITIAL_STATE, { type, payload }) => {
@@ -33,7 +33,7 @@ export const clientsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         questions: [...payload.questions],
-        types: [...payload.types]
+        types: {...payload.types}
       };
     default:
       return state;

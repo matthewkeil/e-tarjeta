@@ -45,7 +45,7 @@ export default ({
   formControlClassName,
   label,
   name,
-  answerButtons,
+  answers,
   onBlur,
   warnClassName,
   errorClassName,
@@ -70,7 +70,7 @@ export default ({
       warnClassName={warnClassName}
       errorClassName={errorClassName}
     >
-      {answerButtons.map(label => (
+      {answers.map(({label, value}) => (
         <FormControlLabel
           control={
             <Radio
@@ -78,7 +78,7 @@ export default ({
             // classes={radioButtonPassedClasses}
             />
           }
-          value={label}
+          value={value}
           label={label}
         />
       ))}
