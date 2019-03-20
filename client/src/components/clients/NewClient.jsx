@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 
 import { ACT } from "../../store";
-import { DateQuestion, TextQuestion, RadioQuestion } from "../core";
+import { DateQuestion, TextQuestion, RadioQuestion, TextAreaQuestion } from "../core";
 
 import {TYPES} from './question_types';
  
@@ -52,7 +52,7 @@ class Register extends Component {
               );
             case TYPES.TEXT:
             default:
-              return (<TextQuestion name={name} label={label} />);
+              return (<TextAreaQuestion name={name} label={label} />);
           }
         })}
       </form>
