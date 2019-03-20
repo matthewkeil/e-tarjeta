@@ -14,6 +14,7 @@ const passport = require('./passport');
 const authRouter = require('./routes/auth.router');
 const appointmentRouter = require('./routes/appointments.router');
 const clientsRouter = require('./routes/clients.router');
+const providersRouter = require('./routes/providers.router');
 
 const PROD = process.env.NODE_ENV === 'production';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'Terrible_Session_Secret';
@@ -57,6 +58,7 @@ if (PROD) {
 api.use('/clients', clientsRouter);
 api.use('/auth', authRouter);
 api.use('/', appointmentRouter);
+api.use('/providers', providersRouter);
 
 api.use((err, req, res, next) => {
   console.error(`>>>> error handler\n\n${err}\n\n>>>> error handler`);

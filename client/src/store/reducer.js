@@ -6,6 +6,7 @@ import { snackbarReducer as snackbar } from "./snackbar";
 import { authReducer as auth } from "./auth";
 import { clientsReducer as clients } from "./clients";
 import { appointmentsReducer as appointments } from './appointments';
+import { providersReducer as providers } from './providers';
 
 export const rootReducer = history =>
   combineReducers({
@@ -14,5 +15,6 @@ export const rootReducer = history =>
     snackbar,
     auth,
     clients,
-    appointments
+    appointments,
+    providers
   });

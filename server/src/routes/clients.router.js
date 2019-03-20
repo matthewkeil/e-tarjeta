@@ -127,14 +127,12 @@ const QUESTIONS_LIST = [
   {
     id: "",
     type: TYPES.BOOLEAN,
-    type: "BOOLEAN",
     question: "FAMILIARES - OTRA CONDICION MEDICA GRAVE",
     answer: ""
   },
   {
     id: "",
     type: TYPES.BOOLEAN,
-    type: "BOOLEAN",
     question: "PERSONALES - TBC",
     answer: ""
   },
