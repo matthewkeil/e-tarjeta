@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "prod": "nodemon src",
-    "start": "nodemon src --delay 1000 --watch src --ignore node_modules"
+    "start": "nodemon --config nodemon.dev.json"
   },
   "optionalDependencies": {
     "bcrypt": "^3.0.4"
