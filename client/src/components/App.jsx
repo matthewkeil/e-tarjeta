@@ -16,6 +16,8 @@ const App = () => (
       {/* <Route path="/clients/:clientId/appointments/new" component={NewAppointment} /> */}
       {/* <Route path="/providers/new" component={NewProvider} /> */}
       {/* <Route path="/providers/:providerId" component={ProviderProfile} /> */}
+      {/* <Route path='/appointments' exact render={() => <Appointments />} /> */}
+      {/* <Route path="/auth/register" component={Register} /> */}
       {/* <Route path="/auth/login" exact component={Login} /> */}
     </Switch>
   </div>
