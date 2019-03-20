@@ -42,11 +42,14 @@ export default ({
     name={name}
     label={label ? label : name}
     fullWidth={fullWidth}
-    passedClasses={{
-      inputClassName,
-      warnClassName,
-      errorClassName
-    }}
+    inputClassName={inputClassName}
+    warnClassName={warnClassName}
+    errorClassName={errorClassName}
+    // passedClasses={{
+    //   inputClassName,
+    //   warnClassName,
+    //   errorClassName
+    // }}
     component={renderTextField}
     autoFocus={!!autoFocus}
     // onKeyDown={catchEnter}

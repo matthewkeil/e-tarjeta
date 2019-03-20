@@ -8,8 +8,8 @@ import JssProvider from "react-jss/lib/JssProvider";
 import { create } from "jss";
 import { createGenerateClassName, jssPreset } from "@material-ui/core/styles";
 import { SnackbarProvider } from "notistack";
-import { MuiPickersUtilsProvider } from 'material-ui-pickers';
-import MomentUtils from '@date-io/moment';
+// import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+// import MomentUtils from '@date-io/moment';
 
 import configureStore from "./store";
 import * as serviceWorker from "./serviceWorker";
@@ -32,9 +32,9 @@ ReactDOM.render(
     <JssProvider jss={jss} generateClassName={generateClassName}>
       <ConnectedRouter history={history}>
         <SnackbarProvider>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
+          {/* <MuiPickersUtilsProvider utils={MomentUtils}> */}
             <App />
-          </MuiPickersUtilsProvider>
+          {/* </MuiPickersUtilsProvider> */}
         </SnackbarProvider>
       </ConnectedRouter>
     </JssProvider>

@@ -66,10 +66,10 @@ api.use(async (req, res, next) => {
 
     let user;
 
-    user = await Clients.findByID(id);
+    // user = await Clients.findByID(id);
 
     if (!user) { 
-      user = await Providers.findById(id);
+      // user = await Providers.findById(id);
     }
 
     req.user = user;

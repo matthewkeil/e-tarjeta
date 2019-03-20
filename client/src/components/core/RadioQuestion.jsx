@@ -70,8 +70,9 @@ export default ({
       warnClassName={warnClassName}
       errorClassName={errorClassName}
     >
-      {answers.map(({label, value}) => (
+      {answers.map(({label, value}, key) => (
         <FormControlLabel
+        key={key}
           control={
             <Radio
             // className={radioButtonClassName}
