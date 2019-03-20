@@ -80,7 +80,7 @@ api.use(async (req, res, next) => {
 });
 
 api.use('/clients', clientsRouter);
-api.use('/', appointmentRouter);
+api.use('/appointments', appointmentRouter);
 api.use('/providers', providersRouter);
 
 api.use((err, req, res, next) => {

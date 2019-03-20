@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router";
-import { Notifier } from "./core";
+import { Notifier, CardLayout } from "./core";
 
 import NewClient from './clients/NewClient';
 

@@ -304,7 +304,7 @@ const QUESTIONS_LIST = [
  * client.
  *
  */
-clientsRouter.get("/new", isLoggedIn, (req, res, next) => {
+clientsRouter.get("/new", (req, res, next) => {
   res.json({ questions: QUESTIONS_LIST });
   res.end();
 });
