@@ -20,7 +20,6 @@ const getAppointments = appointments => ({
 const attemptGetAppointments = dispatch => {
   axios.get(`${API_URL}/appointments`)
     .then(res => {
-      console.log(res);
       dispatch(getAppointments(res.data));
       // dispatch(routerActions.push("/appointments"));
     })
@@ -37,7 +36,6 @@ export const appointmentsActions = {
 export const appointmentsReducer = (state = [], action) => {
     switch(action.type) {
         case APPOINTMENT_ACTIONS.GET_ALL_APPOINTMENTS:
-        console.log(action)
             return [...action.appointments.appointments]
         default:
             return {...state}
