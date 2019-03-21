@@ -22,17 +22,14 @@ const actions = {
   attemptGetProviderProfile: (_id) => dispatch => {
     //WHAT INFO SHOULD WE PASS IN URL TO GET PROFILE?
     // header state.token
-    console.log(_id)
+    
     axios.get(`${API_URL}/${_id}`)
       .then( res => {
         dispatch(getProviderProfileSuccess({...res.data}))
-        dispatch(routerActions.push(`${API_URL}/${_id}`));
-        console.log('arrived')
       })
       .catch(err => console.log(err));
   },
   attemptRegisterProvider: ({email, password, license}) => (dispatch) => {
-    console.log(email, password, license)
     axios.post(`${API_URL}/new`, {
       email,
       password,
@@ -40,6 +37,7 @@ const actions = {
     })
       .then(res => {
         dispatch(registerProviderSuccess({token: res.data.token, _id: res.data._id}))
+        dispatch(routerActions.push(`${res.data._id}`));
       })
       .catch(err => console.log(err));
   }
@@ -52,7 +50,7 @@ const INITIAL_STATE = {};
 export const providersReducer = (state = INITIAL_STATE, action) => {
   switch(action.type){
     case ACTIONS.GET_PROVIDER_PROFILE_SUCCESS:
-      return {...action.payload};
+      return {...state, ...action.payload};
     case ACTIONS.REGISTER_PROVIDER_SUCCESS:
       return {...action.payload};
     default:

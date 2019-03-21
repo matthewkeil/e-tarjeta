@@ -51,10 +51,8 @@ const styles = theme => ({
 
 function ProviderRegister(props) {
   const { classes, email, password, license } = props;
-  console.log(email);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, password, license)
     props.attemptRegisterProvider({email, password, license});
   }
 
