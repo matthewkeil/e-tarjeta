@@ -60,11 +60,8 @@ class Register extends Component {
               );
             case TYPES.TEXT:
             default:
-<<<<<<< HEAD
               return <TextQuestion key={id} name={name} label={label} />;
-=======
               return (<TextAreaQuestion name={name} label={label} />);
->>>>>>> 43bb624419554ba2c1d1702a0f1fb2d425efa803
           }
         })}
       </form>
