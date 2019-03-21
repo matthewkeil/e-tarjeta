@@ -308,4 +308,14 @@ clientsRouter.get("/new", (req, res, next) => {
   res.end();
 });
 
+clientsRouter.get("/:id", isLoggedIn, (req, res, next) => {
+
+    const {id, email, name} = req.user;
+    const USER = {id, email, name};
+
+
+    res.json(USER);
+    res.end();
+  });
+
 module.exports = clientsRouter;

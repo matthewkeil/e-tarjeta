@@ -39,9 +39,7 @@ providerSchema.pre("save", async function(next) {
     console.log(err);
   }
 });
-
-providerSchema.methods.validatePassword = function(password) {
-  return bcrypt.compare(password, this.password);
+s
 }
 
 providerSchema.methods.hasValidToken = function() {
