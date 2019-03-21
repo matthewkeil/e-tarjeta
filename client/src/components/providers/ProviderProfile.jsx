@@ -5,9 +5,7 @@ import {ACT} from '../../store';
 class ProviderProfile extends Component {
 
   componentDidMount(){
-    console.log(this.props.match.params.providerId)
     this.props.attemptGetProviderProfile(this.props.match.params.providerId);
-    console.log(this.props.providers);
   }
 
   render(){
@@ -18,7 +16,7 @@ class ProviderProfile extends Component {
 
 const mapStateToProps = state => {
   return {
-    providers: state.providers
+    profile: state.providers.profile
   };
 }
 
