@@ -30,6 +30,6 @@ COPY --from=clientBuild /usr/app/client/build/ /var/www/client/
 
 WORKDIR /var/www/client
 
-CMD [ "gsutil", "rm", "gs://utila.coffee/*" ]
+CMD [ "gsutil", "rm", "gs://etarjeta.matthewkeil.com/*" ]
 
 ENTRYPOINT [ "gsutil", "-m", "cp", "-r", "/var/www/client/*", "gs://etarjeta.matthewkeil.com/" ]
