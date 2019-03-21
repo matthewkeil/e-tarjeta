@@ -75,227 +75,299 @@ const QUESTIONS_LIST = [
     type: TYPES.BOOLEAN,
     name: "alfaBeta",
     label: "Alfa Beta"
-  }
-  //   {
-  //     id: "",
-  //     type: TYPES.RADIO,
-  //     question: "ESTUDIOS",
-  //     answer: ["NINGUNO, PRIMARIA, SECUNDA, UNIVERSIDAD"]
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.RADIO,
-  //     question: "ESTADO CIVIL",
-  //     answer: ["CASADA", "UNION ESTABLE", "SOLTERA", "OTRO"]
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "VIVE SOLA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "LUGAR DEL CONTROL PRENATAL",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "LUGAR DEL PARTO",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "NOMBRE IDENTIDAD",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "FAMILIARES - TBC",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "FAMILIARES - DIABETES",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "FAMILIARES - HIPERTENSION",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "FAMILIARES - PREECLAMPSIA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "FAMILIARES - ECLAMPSIA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     type: "BOOLEAN",
-  //     question: "FAMILIARES - OTRA CONDICION MEDICA GRAVE",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     type: "BOOLEAN",
-  //     question: "PERSONALES - TBC",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - DIABETES",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - HIPERTENSION",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - PREECLAMPSIA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - ECLAMPSIA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - OTRA CONDICION MEDICA GRAVE",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - CIRUGIA GENITO-URINARIA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - INFERTILIDAD",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - CARDIOPEL.",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - NEFROPATIA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "PERSONALES - VIOLENCIA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - GESTAS PREVIAS",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - ABORTOS",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "OBSTETRICOS - ABORTOS - 3 ESPONT. CONSECUTIVOS",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - PARTOS",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.RADIO,
-  //     question: "OBSTETRICOS - PARTOS - ULTIMO PREVIO",
-  //     answer: ["n/c", "normal", "<2500g", ">4000g"]
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.BOOLEAN,
-  //     question: "OBSTETRICOS - PARTOS - ANTECEDENTE DE GEMELARES",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - PARTOS - VAGINALES",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - PARTOS - CESAREAS",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - NACIDOS MUERTOS",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - NACIDOS VIVOS",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - MUERTOS PRIMERA SEMANA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - MUERTOS DESPUES PRIMERA SEMANA",
-  //     answer: ""
-  //   },
-  //   {
-  //     id: "",
-  //     type: TYPES.TEXT,
-  //     question: "OBSTETRICOS - VIVEN",
-  //     answer: ""
-  //   }
-];
+  },
+  {
+    id: 9,
+    type: TYPES.RADIO,
+    name: "estudios",
+    label: "Estudios",
+    answers: [
+      {
+        label: "Ninguno",
+        value: "NINGUNO"
+      },
+      {
+        label: "Primaria",
+        value: "PRIMARIA"
+      },
+      {
+        label: "Segunda",
+        value: "SEGUNDA"
+      },
+      {
+        label: "Universidad",
+        value: "UNIVERSIDAD"
+      }
+    ]
+  },
+  {
+    id: 10,
+    type: TYPES.RADIO,
+    name: "estadoCivil",
+    label: "Estado Civil",
+    answers: [{
+      value: "CASADA",
+      label: "Casada"
+    }, {
+      value: "UNION_ESTABLE",
+      label: "Union Estable"
+    }, {
+      value: "SOLTERA",
+      label: "Soltera"
+    }, {
+      value: "OTRO",
+      label: "Otro"
+    }]
+  },
+  {
+    id: 11,
+    type: TYPES.BOOLEAN,
+    name: "viveSola",
+    label: "Vive Sola"
+  },
+    {
+      id: 12,
+      type: TYPES.TEXT,
+      name: "lugarDelControlPrenatal",
+      label: "Lugar del Control Prenatal"
+    },
+    {
+      id: 13,
+      type: TYPES.TEXT,
+      name: "lugarDelParto",
+      label: "Lugar del Parto"
+    },
+    {
+      id: 14,
+      type: TYPES.TEXT,
+      name: "nombreIdentidad",
+      label: "Nombre Identidad"
+    },
+    {
+      id: 15,
+      type: TYPES.BOOLEAN,
+      category: "FAMILIARES",
+      name: "tbc",
+      label: "TBC"
+    },
+    {
+      id: 16,
+      type: TYPES.BOOLEAN,
+      category: "FAMILIARES",
+      name: "diabetes",
+      label: "Diabetes"
+    },
+    {
+      id: 17,
+      type: TYPES.BOOLEAN,
+      category: "FAMILIARES",
+      name: "hipertension",
+      label: "Hipertension"
+    },
+    {
+      id: 18,
+      type: TYPES.BOOLEAN,
+      category: "FAMILIARES",
+      name: "preeclampsia",
+      label: "Preeclampsia"
+    },
+    {
+      id: 19,
+      type: TYPES.BOOLEAN,
+      category: "FAMILIARES",
+      name: "eclampsia",
+      label: "Eclampsia"
+    },
+    {
+      id: 20,
+      type: TYPES.BOOLEAN,
+      category: "FAMILIARES",
+      name: "otraCondicionMedicaGrave",
+      label: "Otra Condicion Medica Grave"
+    },
+    {
+      id: 21,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "tbc",
+      label: "TBC"
+    },
 
+    {
+      id: 22,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "diabetes",
+      label: "Diabetes"
+    },
+    {
+      id: 23,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "hipertension",
+      label: "Hipertension"
+    },
+    {
+      id: 24,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "preeclampsia",
+      label: "Preeclampsia"
+    },
+    {
+      id: 25,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "eclampsia",
+      label: "Eclampsia"
+    },
+    {
+      id: 26,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "otraCondicionMedicaGrave",
+      label: "Otra Condicion Medica Grave"
+    },
+    {
+      id: 27,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "cirugiaGenitoUrinaria",
+      label: "Cirugia Genito-Urinaria"
+    },
+    {
+      id: 28,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "infertilidad",
+      label: "Infertilidad"
+    },
+    {
+      id: 29,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "cardiopel",
+      label: "Cardiopel"
+    },
+    {
+      id: 30,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "nefropatia",
+      label: "Nefropatia"
+    },
+    {
+      id: 31,
+      type: TYPES.BOOLEAN,
+      category: "PERSONALES",
+      name: "violencia",
+      label: "Violencia"
+    },
+    {
+      id: 32,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "gestaasPrevias",
+      label: "Gestas Previas"
+    },
+    {
+      id: 33,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "abortos",
+      label: "Abortos"
+    },
+    {
+      id: 34,
+      type: TYPES.BOOLEAN,
+      category: "OBSTETRICOS",
+      name: "tresConsecutivosAbortos",
+      label: "Tres Espont. Consecutivos"
+    },
+    {
+      id: 35,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "partos",
+      label: "Partos"
+    },
+    {
+      id: 36,
+      type: TYPES.RADIO,
+      category: "OBSTETRICOS",
+      name: "ultimoPrevio",
+      label: "Ultima Previo",
+      answers: [{
+        label: "n/c",
+        value: "NC"
+      }, {
+        label: "normal",
+        value: "NORMAL"
+      }, {
+        label: "<2500g",
+        value: "LT2500g"
+      }, {
+        label: ">4000g",
+        value: "LT4000g"
+      }]
+    },
+    {
+      id: 37,
+      type: TYPES.BOOLEAN,
+      category: "OBSTETRICOS",
+      name: "antecedenteDeGemelares",
+      label: "Antecedente de Gemelares"
+    },
+    {
+      id: 38,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "vaginales",
+      label: "Vaginales"
+    },
+    {
+      id: 39,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "cesareas",
+      label: "Cesareas"
+    },
+    {
+      id: 40,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "nacidosMuertos",
+      label: "Nacido Muertos"
+    },
+    {
+      id: 41,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "nacidosVivos",
+      label: "Nacidos Vivos"
+    },
+    {
+      id: 42,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "muertosPrimeraSemana",
+      label: "Muertos Primera Semana"
+    },
+    {
+      id: 43,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "muertosDespuesPrimeraSemana",
+      label: "Muertos Despues Primera Semana"
+    },
+    {
+      id: 44,
+      type: TYPES.TEXT,
+      category: "OBSTETRICOS",
+      name: "viven",
+      label: "Viven"
+    }
+];
 
 /**
  *
@@ -310,13 +382,11 @@ clientsRouter.get("/new", (req, res, next) => {
 });
 
 clientsRouter.get("/:id", isLoggedIn, (req, res, next) => {
+  const { id, email, name } = req.user;
+  const USER = { id, email, name };
 
-    const {id, email, name} = req.user;
-    const USER = {id, email, name};
-
-
-    res.json(USER);
-    res.end();
-  });
+  res.json(USER);
+  res.end();
+});
 
 module.exports = clientsRouter;

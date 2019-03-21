@@ -39,8 +39,7 @@ providerSchema.pre("save", async function(next) {
     console.log(err);
   }
 });
-s
-}
+
 
 providerSchema.methods.hasValidToken = function() {
   return !!this.token 

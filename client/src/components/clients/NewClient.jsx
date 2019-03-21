@@ -34,10 +34,11 @@ class Register extends Component {
       <h1>hello</h1>
     ) : (
       <form>
+        
         {this.props.questions.map(({ id, type, name, label, answers }) => {
           switch (type) {
             case TYPES.TEXTAREA:
-              return <h1 key={id}>TextArea</h1>;
+              return (<TextAreaQuestion key={id} name={name} label={label} />);
             case TYPES.RADIO:
               return (
                 <RadioQuestion
@@ -61,7 +62,6 @@ class Register extends Component {
             case TYPES.TEXT:
             default:
               return <TextQuestion key={id} name={name} label={label} />;
-              return (<TextAreaQuestion name={name} label={label} />);
           }
         })}
       </form>
