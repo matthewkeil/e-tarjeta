@@ -70,8 +70,9 @@ const Login = props => (
   </CardLayout>
 );
 
+const selector = formValueSelector("login");
+
 const mapState = state => {
-  const selector = formValueSelector("login");
   return {
     email: selector(state, "email"),
     password: selector(state, "password")

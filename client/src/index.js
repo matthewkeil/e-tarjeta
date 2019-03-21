@@ -32,9 +32,7 @@ ReactDOM.render(
     <JssProvider jss={jss} generateClassName={generateClassName}>
       <ConnectedRouter history={history}>
         <SnackbarProvider>
-          {/* <MuiPickersUtilsProvider utils={MomentUtils}> */}
-            <App />
-          {/* </MuiPickersUtilsProvider> */}
+          <App />
         </SnackbarProvider>
       </ConnectedRouter>
     </JssProvider>

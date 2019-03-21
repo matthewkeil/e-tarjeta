@@ -10,7 +10,7 @@ const renderDateField = ({
   name,
   label,
   onBlur,
-  getFormatString
+  fullWidth
 }) => (
   <MuiPickersUtilsProvider utils={MomentUtils}>
     <DatePicker
@@ -22,6 +22,7 @@ const renderDateField = ({
       disableFuture
       openTo="year"
       invalidLabel={label}
+      fullWidth={fullWidth}
       // format={getFormatString({
       //   moment: "DD/MM/YYYY"
       // })}
@@ -31,11 +32,12 @@ const renderDateField = ({
   </MuiPickersUtilsProvider>
 );
 
-export default ({ name, label, onBlur }) => (
+export default ({ name, label, onBlur, fullWidth }) => (
   <Field
     name={name}
     label={label}
     component={renderDateField}
     onBlur={onBlur}
+    fullWidth={fullWidth}
   />
 );

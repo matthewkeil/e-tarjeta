@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ACT} from '../../store';
 
-class ProviderProfile extends Component{
+class ProviderProfile extends Component {
 
   componentDidMount(){
     this.props.attemptGetProfile();
   }
 
   render(){
-    return;
+    return (<div></div>);
   }
 }
 
