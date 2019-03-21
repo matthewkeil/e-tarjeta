@@ -14,6 +14,7 @@ const db = require('./db');
 const authRouter = require('./routes/auth.router');
 const appointmentRouter = require('./routes/appointments.router');
 const clientsRouter = require('./routes/clients.router');
+const providersRouter = require('./routes/providers.router');
 
 const PROD = process.env.NODE_ENV === 'production';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'Terrible_Session_Secret';
@@ -79,7 +80,8 @@ api.use(async (req, res, next) => {
 });
 
 api.use('/clients', clientsRouter);
-api.use('/', appointmentRouter);
+api.use('/appointments', appointmentRouter);
+api.use('/providers', providersRouter);
 
 api.use((err, req, res, next) => {
   console.error(`>>>> error handler\n\n${err}\n\n>>>> error handler`);

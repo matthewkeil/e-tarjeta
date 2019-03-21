@@ -82,7 +82,7 @@ const TEST_APPOINTMENTS = [
 ]
 
 
-appointmentRouter.get('/appointments', (req, res, next) => {
+appointmentRouter.get('/', (req, res, next) => {
   console.log('sending data')
   res.status(200).json({appointments: TEST_APPOINTMENTS});
   console.log('sent data');

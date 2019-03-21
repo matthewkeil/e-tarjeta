@@ -11,84 +11,84 @@ import {connect} from 'react-redux';
 import { ACT } from "../../store";
 
 
-const TEST_APPOINTMENTS = [
-  {
-    date: 'TIME DD/MM/YYYY',
-    provider: 'DR. GOMEZ',
-    facility: 'PERQUIN WAITING HOUSE',
-    gestation_day: 'DD',
-    weight: '100.0',
-    blood_pressure: '0/0',
-    uterus_depth: 'unknown',
-    fetal_presentation:'unknown',
-    fcf: 'fcf',
-    fetal_movement: 'unknown',
-    proteinuria: 'unknown',
-    notes: 'TEST NOTE NOTE NOTES TEST',
-    provider_initials: 'DR. G',
-    next_visit: 'DD/MM/YYYY'
-  },{
-    date: 'TIME DD/MM/YYYY',
-    provider: 'DR. GOMEZ',
-    facility: 'PERQUIN WAITING HOUSE',
-    gestation_day: 'DD',
-    weight: '100.0',
-    blood_pressure: '0/0',
-    uterus_depth: 'unknown',
-    fetal_presentation:'unknown',
-    fcf: 'fcf',
-    fetal_movement: 'unknown',
-    proteinuria: 'unknown',
-    notes: 'TEST NOTE NOTE NOTES TEST',
-    provider_initials: 'DR. G',
-    next_visit: 'DD/MM/YYYY'
-  },{
-    date: 'TIME DD/MM/YYYY',
-    provider: 'DR. GOMEZ',
-    facility: 'PERQUIN WAITING HOUSE',
-    gestation_day: 'DD',
-    weight: '100.0',
-    blood_pressure: '0/0',
-    uterus_depth: 'unknown',
-    fetal_presentation:'unknown',
-    fcf: 'fcf',
-    fetal_movement: 'unknown',
-    proteinuria: 'unknown',
-    notes: 'TEST NOTE NOTE NOTES TEST',
-    provider_initials: 'DR. G',
-    next_visit: 'DD/MM/YYYY'
-  },{
-    date: 'TIME DD/MM/YYYY',
-    provider: 'DR. GOMEZ',
-    facility: 'PERQUIN WAITING HOUSE',
-    gestation_day: 'DD',
-    weight: '100.0',
-    blood_pressure: '0/0',
-    uterus_depth: 'unknown',
-    fetal_presentation:'unknown',
-    fcf: 'fcf',
-    fetal_movement: 'unknown',
-    proteinuria: 'unknown',
-    notes: 'TEST NOTE NOTE NOTES TEST',
-    provider_initials: 'DR. G',
-    next_visit: 'DD/MM/YYYY'
-  },{
-    date: 'TIME DD/MM/YYYY',
-    provider: 'DR. GOMEZ',
-    facility: 'PERQUIN WAITING HOUSE',
-    gestation_day: 'DD',
-    weight: '100.0',
-    blood_pressure: '0/0',
-    uterus_depth: 'unknown',
-    fetal_presentation:'unknown',
-    fcf: 'fcf',
-    fetal_movement: 'unknown',
-    proteinuria: 'unknown',
-    notes: 'TEST NOTE NOTE NOTES TEST',
-    provider_initials: 'DR. G',
-    next_visit: 'DD/MM/YYYY'
-  }
-]
+// const TEST_APPOINTMENTS = [
+//   {
+//     date: 'TIME DD/MM/YYYY',
+//     provider: 'DR. GOMEZ',
+//     facility: 'PERQUIN WAITING HOUSE',
+//     gestation_day: 'DD',
+//     weight: '100.0',
+//     blood_pressure: '0/0',
+//     uterus_depth: 'unknown',
+//     fetal_presentation:'unknown',
+//     fcf: 'fcf',
+//     fetal_movement: 'unknown',
+//     proteinuria: 'unknown',
+//     notes: 'TEST NOTE NOTE NOTES TEST',
+//     provider_initials: 'DR. G',
+//     next_visit: 'DD/MM/YYYY'
+//   },{
+//     date: 'TIME DD/MM/YYYY',
+//     provider: 'DR. GOMEZ',
+//     facility: 'PERQUIN WAITING HOUSE',
+//     gestation_day: 'DD',
+//     weight: '100.0',
+//     blood_pressure: '0/0',
+//     uterus_depth: 'unknown',
+//     fetal_presentation:'unknown',
+//     fcf: 'fcf',
+//     fetal_movement: 'unknown',
+//     proteinuria: 'unknown',
+//     notes: 'TEST NOTE NOTE NOTES TEST',
+//     provider_initials: 'DR. G',
+//     next_visit: 'DD/MM/YYYY'
+//   },{
+//     date: 'TIME DD/MM/YYYY',
+//     provider: 'DR. GOMEZ',
+//     facility: 'PERQUIN WAITING HOUSE',
+//     gestation_day: 'DD',
+//     weight: '100.0',
+//     blood_pressure: '0/0',
+//     uterus_depth: 'unknown',
+//     fetal_presentation:'unknown',
+//     fcf: 'fcf',
+//     fetal_movement: 'unknown',
+//     proteinuria: 'unknown',
+//     notes: 'TEST NOTE NOTE NOTES TEST',
+//     provider_initials: 'DR. G',
+//     next_visit: 'DD/MM/YYYY'
+//   },{
+//     date: 'TIME DD/MM/YYYY',
+//     provider: 'DR. GOMEZ',
+//     facility: 'PERQUIN WAITING HOUSE',
+//     gestation_day: 'DD',
+//     weight: '100.0',
+//     blood_pressure: '0/0',
+//     uterus_depth: 'unknown',
+//     fetal_presentation:'unknown',
+//     fcf: 'fcf',
+//     fetal_movement: 'unknown',
+//     proteinuria: 'unknown',
+//     notes: 'TEST NOTE NOTE NOTES TEST',
+//     provider_initials: 'DR. G',
+//     next_visit: 'DD/MM/YYYY'
+//   },{
+//     date: 'TIME DD/MM/YYYY',
+//     provider: 'DR. GOMEZ',
+//     facility: 'PERQUIN WAITING HOUSE',
+//     gestation_day: 'DD',
+//     weight: '100.0',
+//     blood_pressure: '0/0',
+//     uterus_depth: 'unknown',
+//     fetal_presentation:'unknown',
+//     fcf: 'fcf',
+//     fetal_movement: 'unknown',
+//     proteinuria: 'unknown',
+//     notes: 'TEST NOTE NOTE NOTES TEST',
+//     provider_initials: 'DR. G',
+//     next_visit: 'DD/MM/YYYY'
+//   }
+// ]
 
 const styles = theme => ({
   root: {
@@ -122,7 +122,7 @@ class Appointments extends Component{
         return (
           <ExpansionPanel key={index}>
             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography className={classes.heading}>DAY {appointment.gestation_day} - APPOINTMENT #{TEST_APPOINTMENTS.length - index} - {appointment.date}</Typography>
+              <Typography className={classes.heading}>DAY {appointment.gestation_day} - APPOINTMENT #{this.props.appointments.length - index} - {appointment.date}</Typography>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails style={{flexDirection: "column", alignItems: 'flex-start'}}>
               <Typography paragraph={true}>CARE PROVIDER: {appointment.provider}</Typography>

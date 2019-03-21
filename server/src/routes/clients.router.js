@@ -296,6 +296,7 @@ const QUESTIONS_LIST = [
   //   }
 ];
 
+
 /**
  *
  * Sends list of registration questions
