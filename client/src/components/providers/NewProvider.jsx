@@ -1,17 +1,18 @@
 
 import React from 'react';
+import {connect} from 'react-redux';
+import {ACT} from '../../store';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import { reduxForm, formValueSelector } from "redux-form";
 
 import { MedicalBag } from 'mdi-material-ui'
+import { TextQuestion } from '../core';
+import { Redirect } from 'react-router';
 
 
 const styles = theme => ({
@@ -46,8 +47,16 @@ const styles = theme => ({
   },
 });
 
-function SignIn(props) {
-  const { classes } = props;
+
+
+function ProviderRegister(props) {
+  const { classes, email, password, license } = props;
+  console.log(email);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email, password, license)
+    props.attemptRegisterProvider({email, password, license});
+  }
 
   return (
     <main className={classes.main}>
@@ -56,10 +65,10 @@ function SignIn(props) {
           <MedicalBag />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Provider Registration
         </Typography>
-        <form className={classes.form}>
-          <FormControl margin="normal" required fullWidth>
+        <form className={classes.form} onSubmit={handleSubmit}>
+          {/* <FormControl margin="normal" required fullWidth>
             <InputLabel htmlFor="email">Email Address</InputLabel>
             <Input id="email" name="email" autoComplete="email" autoFocus />
           </FormControl>
@@ -70,7 +79,10 @@ function SignIn(props) {
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-          />
+          /> */}
+          <TextQuestion name={'email'} label={'Email'} fullWidth/>
+          <TextQuestion name={'password'} label={'Password'} fullWidth/>
+          <TextQuestion name={'license'} label={'Medical License ID'} fullWidth/>
           <Button
             type="submit"
             fullWidth
@@ -86,5 +98,20 @@ function SignIn(props) {
   );
 }
 
+const selector = formValueSelector('providerRegister');
 
-export default withStyles(styles)(SignIn);
+function mapStateToProps(state) {
+  return {
+    email: selector(state, 'email'),
+    password: selector(state, 'password'),
+    license: selector(state, 'license')
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    attemptRegisterProvider: ({email, password, license}) => dispatch(ACT.providers.attemptRegisterProvider({email, password, license}))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({form: 'providerRegister'})(withStyles(styles)(ProviderRegister)));

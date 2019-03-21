@@ -5,11 +5,13 @@ import {ACT} from '../../store';
 class ProviderProfile extends Component {
 
   componentDidMount(){
-    this.props.attemptGetProfile();
+    console.log(this.props.match.params.providerId)
+    this.props.attemptGetProviderProfile(this.props.match.params.providerId);
+    console.log(this.props.providers);
   }
 
   render(){
-    return (<div></div>);
+    return <h1>hey</h1>;
   }
 }
 
@@ -22,7 +24,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    attemptGetProfile: () => dispatch(ACT.providers.attemptGetProfile)
+    attemptGetProviderProfile: (_id) => dispatch(ACT.providers.attemptGetProviderProfile(_id))
   };
 }
 
