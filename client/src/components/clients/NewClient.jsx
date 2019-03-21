@@ -8,31 +8,13 @@ import { DateQuestion, TextQuestion, RadioQuestion, BooleanQuestion, TextAreaQue
 import { TYPES } from "./question_types";
 
 class Register extends Component {
-  // questions = [
-  //   {
-  //     id: "booger1234",
-  //     type: TYPE.RADIO,
-  //     label: "",
-  //     question: "Fracaso Metodo Anticoncepcion",
-  //     answers: [
-  //       "no usaba",
-  //       "barrera",
-  //       "DIU",
-  //       "horomonal",
-  //       "emergencia",
-  //       "natural"
-  //     ]
-  //   }
-  // ];
 
   componentDidMount() {
     this.props.attemptGetQuestions();
   }
 
   render() {
-    return !this.props.questions.length ? (
-      <h1>hello</h1>
-    ) : (
+    return !this.props.questions.length ? null : (
       <form>
         
         {this.props.questions.map(({ id, type, name, label, answers }) => {
