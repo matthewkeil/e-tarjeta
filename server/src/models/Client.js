@@ -27,13 +27,13 @@ const clientSchema = new Schema({
 
 clientSchema.pre("save", async function(next) {
   try {
-    const user = this;
+    const client = this;
 
-    if (!user.isModified("password")) return next();
+    if (!client.isModified("password")) return next();
 
-    const hash = await bcrypt.hash(user.password, 10);
+    const hash = await bcrypt.hash(client.password, 10);
 
-    user.password = hash;
+    client.password = hash;
 
     next();
     
@@ -43,6 +43,8 @@ clientSchema.pre("save", async function(next) {
 });
 
 clientSchema.methods.validatePassword = function(password) {
+  console.log(password)
+  console.log(this.password)
   return bcrypt.compare(password, this.password);
 }
 

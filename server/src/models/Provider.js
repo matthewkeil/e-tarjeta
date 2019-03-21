@@ -25,13 +25,13 @@ const providerSchema = new Schema({
 
 providerSchema.pre("save", async function(next) {
   try {
-    const user = this;
+    const provider = this;
 
-    if (!user.isModified("password")) return next();
+    if (!provider.isModified("password")) return next();
 
-    const hash = await bcrypt.hash(user.password, 10);
+    const hash = await bcrypt.hash(provider.password, 10);
 
-    user.password = hash;
+    provider.password = hash;
 
     next();
     
@@ -40,6 +40,9 @@ providerSchema.pre("save", async function(next) {
   }
 });
 
+providerSchema.methods.validatePassword = function(password) {
+  return bcrypt.compare(password, this.password);
+}
 
 providerSchema.methods.hasValidToken = function() {
   return !!this.token 
