@@ -4,6 +4,7 @@ const {
   TYPES
 } = require("../../../client/src/components/clients/question_types");
 const { isLoggedIn } = require("../helpers");
+const Client = require('../models/Client');
 
 const QUESTIONS_LIST = [
   {
@@ -376,9 +377,70 @@ const QUESTIONS_LIST = [
  * client.
  *
  */
+
 clientsRouter.get("/new", (req, res, next) => {
   res.json({ questions: QUESTIONS_LIST });
   res.end();
+});
+
+clientsRouter.post('/new', async (req,res,next) => {
+  try{
+    let client, existing;
+
+    if(req.body && req.body.email && req.body.password){
+      existing = await Client.findOne({email: req.body.email});
+    } else return res.status(400).json({error: {message: 'Email and password required'}})
+
+    if(!!existing){
+      return res.status(400).json({ error: {message: 'Client already exists'}})
+    }
+
+    client = new Client({
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    await client.updateToken();
+
+    client.save();
+    
+    return res.status(201).json({
+      token: client.token,
+      _id: client._id
+    });
+
+  } catch(err) {
+    next(err);
+  }
+});
+
+clientsRouter.post('/login', async (req, res, next) => {
+  try {
+      let client;
+
+      if (req.body && req.body.email) {
+          client = await Client.findOne( {email: req.body.email} );
+      } else return res.status(403).send({error: {message: 'Invalid email or password'}});
+
+      if (!client || (client && !(await client.validatePassword(req.body.password || '')))) {
+          return res.status(403).send({error: {message: 'Invalid email or password'}});
+      }
+
+      await client.updateToken();
+
+      client.save();
+
+      if (client.password) delete client.password;
+      // if (user._id) delete user._id;
+
+      return res.status(201).json({
+        token: client.token,
+        _id: client._id
+      });
+
+  } catch (err) {
+      next(err);
+  }
 });
 
 clientsRouter.get("/:id", isLoggedIn, (req, res, next) => {

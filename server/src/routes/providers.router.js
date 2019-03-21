@@ -41,7 +41,7 @@ providersRouter.post('/login', async (req, res, next) => {
       } else return res.status(403).send({error: {message: 'Invalid email or password'}});
 
 
-      if (!provider || (provider && !provider.validatePassword(req.body.password || ''))) {
+      if (!provider || (provider && !(await provider.validatePassword(req.body.password || '')))) {
           return res.status(403).send({error: {message: 'Invalid email or password'}});
       }
 
