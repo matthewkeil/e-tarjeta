@@ -7,6 +7,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
+import styles from './Question.module.scss';
 
 const renderRadioField = ({
   children,
@@ -28,6 +29,7 @@ const renderRadioField = ({
     onChange={(event, value) => input.onChange(value)}
     name={name}
     onBlur={onBlur}
+    classes={{root: styles.radioGroup}}
   >
     {children}
     {touched &&
@@ -70,9 +72,9 @@ export default ({
       warnClassName={warnClassName}
       errorClassName={errorClassName}
     >
-      {answers.map(({label, value}, key) => (
+      {answers.map(({ label, value }, key) => (
         <FormControlLabel
-        key={key}
+          key={key}
           control={
             <Radio
             // className={radioButtonClassName}

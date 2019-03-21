@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ACT} from '../../store';
 
-class ProviderProfile extends Component{
+class ProviderProfile extends Component {
 
   componentDidMount(){
     this.props.attemptGetProviderProfile(this.props.match.params.providerId);
@@ -16,7 +16,7 @@ class ProviderProfile extends Component{
 
 const mapStateToProps = state => {
   return {
-    providers: state.providers
+    profile: state.providers.profile
   };
 }
 

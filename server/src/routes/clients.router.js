@@ -377,7 +377,25 @@ const QUESTIONS_LIST = [
     category: "OBSTETRICOS",
     name: "viven",
     label: "Viven"
-  }
+  },
+  {
+    id: 45,
+    type: TYPES.TEXT,
+    name: "email",
+    label: "Email"
+  },
+  {
+    id: 46,
+    type: TYPES.TEXT,
+    name: "password",
+    label: "Password"
+  },
+  {
+    id: 47,
+    type: TYPES.TEXT,
+    name: "repeatPassword",
+    label: "Repeat Password"
+  },
 ];
 
 /**

@@ -1,12 +1,12 @@
-import axios from 'axios';
-import {routerActions} from 'connected-react-router'; 
+import axios from "axios";
+import { routerActions } from "connected-react-router";
 
 const API_URL = `${process.env.API_URL || "http://localhost:4000"}/providers`;
 
 const ACTIONS = {
-  GET_PROVIDER_PROFILE_SUCCESS: 'GET_PROVIDER_PROFILE_SUCCESS',
-  REGISTER_PROVIDER_SUCCESS: 'REGISTER_PROVIDER_SUCCESS'
-}
+  GET_PROVIDER_PROFILE_SUCCESS: "GET_PROVIDER_PROFILE_SUCCESS",
+  REGISTER_PROVIDER_SUCCESS: "REGISTER_PROVIDER_SUCCESS"
+};
 
 const getProviderProfileSuccess = payload => ({
   type: ACTIONS.GET_PROVIDER_PROFILE_SUCCESS,
@@ -19,42 +19,43 @@ const registerProviderSuccess = payload => ({
 });
 
 const actions = {
-  attemptGetProviderProfile: (_id) => dispatch => {
-    //WHAT INFO SHOULD WE PASS IN URL TO GET PROFILE?
-    // header state.token
-    
-    axios.get(`${API_URL}/${_id}`)
-      .then( res => {
-        dispatch(getProviderProfileSuccess({...res.data}))
+  attemptGetProviderProfile: _id => dispatch => {
+    axios
+      .get(`${API_URL}/${_id}`)
+      .then(res => {
+        dispatch(getProviderProfileSuccess({ ...res.data }));
       })
       .catch(err => console.log(err));
   },
-  attemptRegisterProvider: ({email, password, license}) => (dispatch) => {
-    axios.post(`${API_URL}/new`, {
-      email,
-      password,
-      license
-    })
+  attemptRegisterProvider: ({ email, password, license }) => dispatch => {
+    axios
+      .post(`${API_URL}/new`, {
+        email,
+        password,
+        license
+      })
       .then(res => {
-        dispatch(registerProviderSuccess({token: res.data.token, _id: res.data._id}))
-        dispatch(routerActions.push(`${res.data._id}`));
+        const _id = res.data._id;
+        dispatch(
+          registerProviderSuccess({ token: res.data.token, _id })
+        );
+        dispatch(routerActions.push(`/providers/${_id}`));
       })
       .catch(err => console.log(err));
   }
 };
 
-export {actions as providerActions, ACTIONS as PROVIDER_ACTIONS}
+export { actions as providerActions, ACTIONS as PROVIDER_ACTIONS };
 
 const INITIAL_STATE = {};
 
 export const providersReducer = (state = INITIAL_STATE, action) => {
-  switch(action.type){
+  switch (action.type) {
     case ACTIONS.GET_PROVIDER_PROFILE_SUCCESS:
-      return {...state, ...action.payload};
+      return {...state, profile: {...action.payload }};
     case ACTIONS.REGISTER_PROVIDER_SUCCESS:
-      return {...action.payload};
+      return {...state, registration: {...action.payload }};
     default:
-      return {...state}
+      return { ...state };
   }
-}
-
+};

@@ -4,7 +4,7 @@ import { Notifier } from "./core";
 
 
 import NewClient from './clients/NewClient';
-import ClientProfile from './clients/ClientProfile';
+// import ClientProfile from './clients/ClientProfile';
 import NewProvider from './providers/NewProvider';
 import ProviderProfile from './providers/ProviderProfile';
 
