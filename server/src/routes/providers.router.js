@@ -66,6 +66,7 @@ providersRouter.post('/login', async (req, res, next) => {
 providersRouter.post('/new', async (req,res,next) => {
   try{
     let provider, existing;
+    console.log(req.body);
 
     if(req.body && req.body.email && req.body.password){
       existing = await Provider.findOne({email: req.body.email});
