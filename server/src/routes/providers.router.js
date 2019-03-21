@@ -54,7 +54,7 @@ providersRouter.post('/login', async (req, res, next) => {
       // if (user._id) delete user._id;
 
       return res.status(201).json({
-        token,
+        token: provider.token,
         _id: provider._id
       });
 
@@ -86,7 +86,7 @@ providersRouter.post('/new', async (req,res,next) => {
     provider.save();
     
     return res.status(201).json({
-      token,
+      token: provider.token,
       _id: provider._id
     });
 
