@@ -32,4 +32,4 @@ WORKDIR /var/www/client
 
 CMD [ "gsutil", "rm", "gs://etarjeta.matthewkeil.com/*" ]
 
-ENTRYPOINT [ "gsutil", "-m", "cp", "-r", "/var/www/client/*", "gs://etarjeta.matthewkeil.com/" ]
+RUN [ "gsutil", "-m", "cp", "-r", "/var/www/client/*", "gs://etarjeta.matthewkeil.com/" ]
