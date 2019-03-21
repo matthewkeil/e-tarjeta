@@ -130,8 +130,7 @@ providersRouter.get("/login/google/callback", async (req, res, next) => {
 
 providersRouter.get('/:providerId', (req,res,next) => {
   
-  const id = req.body.params.providerId;
-  
+  const id = req.params.providerId;
   Provider.findById(id)
     .then(provider => {
       res.status(200).json({provider});

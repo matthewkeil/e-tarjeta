@@ -12,6 +12,7 @@ import { reduxForm, formValueSelector } from "redux-form";
 
 import { MedicalBag } from 'mdi-material-ui'
 import { TextQuestion } from '../core';
+import { Redirect } from 'react-router';
 
 
 const styles = theme => ({
