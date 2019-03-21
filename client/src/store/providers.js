@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {routerActions} from 'connected-react-router'; 
 
 const API_URL = `${process.env.API_URL || "http://localhost:4000"}/providers`;
 
@@ -18,12 +19,16 @@ const registerProviderSuccess = payload => ({
 });
 
 const actions = {
-  attemptGetProviderProfile: () => (dispatch, getState) => {
+  attemptGetProviderProfile: (_id) => dispatch => {
     //WHAT INFO SHOULD WE PASS IN URL TO GET PROFILE?
     // header state.token
-    const {_id} = getState();
+    console.log(_id)
     axios.get(`${API_URL}/${_id}`)
-      .then( data => dispatch(getProviderProfileSuccess(data)))
+      .then( res => {
+        dispatch(getProviderProfileSuccess({...res.data}))
+        dispatch(routerActions.push(`${API_URL}/${_id}`));
+        console.log('arrived')
+      })
       .catch(err => console.log(err));
   },
   attemptRegisterProvider: ({email, password, license}) => (dispatch) => {
@@ -33,9 +38,8 @@ const actions = {
       password,
       license
     })
-      .then(data => {
-        console.log(data);
-        dispatch(registerProviderSuccess(data))
+      .then(res => {
+        dispatch(registerProviderSuccess({token: res.data.token, _id: res.data._id}))
       })
       .catch(err => console.log(err));
   }

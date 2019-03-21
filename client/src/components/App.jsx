@@ -15,7 +15,7 @@ const App = () => (
     <Notifier />
     <Switch>
       <Route path="/clients/new" component={NewClient} />
-      <Route path="/clients/:clientId" component={ClientProfile} />
+      {/* <Route path="/clients/:clientId" component={ClientProfile} /> */}
       <Route path="/providers/new" component={NewProvider} />
       <Route path="/providers/:providerId" component={ProviderProfile} />
       {/* <Route path="/clients/:clientId/appointments" component={ClientAppointments} /> */}
