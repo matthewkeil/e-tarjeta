@@ -12,8 +12,9 @@ const getProviderProfileSuccess = payload => ({
 });
 
 const actions = {
-  attemptGetProviderProfile: () => dispatch => {
+  attemptGetProviderProfile: () => (dispatch, getState) => {
     //WHAT INFO SHOULD WE PASS IN URL TO GET PROFILE?
+    // header state.token
     axios.get(`${API_URL}/`)
       .then( data => dispatch(getProviderProfileSuccess(data)))
       .catch(err => console.log(err));
