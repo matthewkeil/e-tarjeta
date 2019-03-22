@@ -1,5 +1,6 @@
 import axios from "axios";
 import config from './axiosConfig';
+import {routerActions} from 'connected-react-router';
 
 
 
@@ -32,23 +33,19 @@ const actions = {
       })
       .catch(err => console.log(err))
   },
-  attemptNewAppointment: () => dispatch => {
+  attemptNewAppointment: data => dispatch => {
     axios(config({
       method: 'post',
       route: '/appointments/new',
-      data: {
-        
-      }
+      data
     }))
       .then(res => {
-        dispatch()
+        dispatch(newAppointment(res.data));
+        dispatch(routerActions.push('/clients'))
       })
   }
 
 };
-
-
-
 
 export { actions as appointmentsActions, ACTIONS as APPOINTMENTS_ACTIONS };
 

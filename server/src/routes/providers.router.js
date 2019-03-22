@@ -67,7 +67,6 @@ providersRouter.post('/new', async (req,res,next) => {
   try{
     let provider, existing;
     
-
     if(req.body && req.body.email && req.body.password){
       existing = await Provider.findOne({email: req.body.email});
     } else return res.status(400).json({error: {message: 'Email and password required'}})

@@ -482,15 +482,16 @@ clientsRouter.post("/login", async (req, res, next) => {
   }
 });
 
-clientsRouter.route("/:id").get(isLoggedIn, (req, res, next) => {
+clientsRouter.route("/:id").get( (req, res, next) => {
   
-  const USER = req.user.toJSON();
-  
-  delete USER.password;
-  delete USER.tokens;
 
-  res.json(USER);
-  res.end();
+  const id = req.params.id;
+  Client.findById(id)
+    .then(client => {
+      res.status(200).json(client);
+    })
+    .catch(err => console.log(err));
+  
 });
 
 module.exports = clientsRouter;

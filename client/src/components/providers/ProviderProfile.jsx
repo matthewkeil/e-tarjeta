@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {ACT} from '../../store';
 import CardLayout from '../core/CardLayout';
-import styles from "./ProviderProfile.module.scss";
+// import styles from "./ProviderProfile.module.scss";
 
 class ProviderProfile extends Component {
 
