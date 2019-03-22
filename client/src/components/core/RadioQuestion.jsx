@@ -51,17 +51,16 @@ export default ({
   onBlur,
   warnClassName,
   errorClassName,
-
   // classes,
   // radioGroupClassName,
   // radioButtonClassName,
-
   ...custom
 }) => (
   <FormControl
     component="fieldset"
     fullWidth={fullWidth}
     className={formControlClassName}
+    {...custom}
     // classes={{ ...classes.formControl }}
   >
     <FormLabel component="legend">{label}</FormLabel>

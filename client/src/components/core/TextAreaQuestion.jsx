@@ -20,7 +20,7 @@ function renderMultilineTextField({
         className={inputClassName ? inputClassName : ""}
         label={input.name}
         multiline
-        rows='4'
+        rows="4"
         {...input}
         {...custom}
       />
@@ -38,7 +38,8 @@ export default ({
   inputClassName,
   warnClassName,
   errorClassName,
-  autoFocus
+  autoFocus,
+  ...custom
 }) => (
   <Field
     name={name}
@@ -51,7 +52,6 @@ export default ({
     }}
     component={renderMultilineTextField}
     autoFocus={!!autoFocus}
-    // onKeyDown={catchEnter}
-    // onBlur={getTitleInfo(url)}
+    {...custom}
   />
 );

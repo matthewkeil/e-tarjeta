@@ -31,8 +31,8 @@ const Register = ({ questions, attemptGetQuestions, handleSubmit }) => {
             label,
             answers,
             key: id,
-            className: styles.question,
-            fullWidth: true
+            fullWidth: true,
+            className: styles.wrapper
           };
 
           switch (type) {

@@ -4,7 +4,7 @@ import { DatePicker } from "material-ui-pickers";
 import { MuiPickersUtilsProvider } from "material-ui-pickers";
 import MomentUtils from "@date-io/moment";
 
-const renderDateField = ({
+const renderDateField = custom => ({
   meta: { touched, error, warning },
   input,
   name,
@@ -28,16 +28,18 @@ const renderDateField = ({
       // })}
       views={["year", "month", "day"]}
       helperText={!touched ? "" : error ? error : warning ? warning : ""}
+      {...custom}
     />
   </MuiPickersUtilsProvider>
 );
 
-export default ({ name, label, onBlur, fullWidth }) => (
+export default ({ name, label, onBlur, fullWidth, ...custom }) => (
   <Field
     name={name}
     label={label}
-    component={renderDateField}
+    component={renderDateField(custom)}
     onBlur={onBlur}
     fullWidth={fullWidth}
+    {...custom}
   />
 );

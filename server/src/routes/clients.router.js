@@ -423,10 +423,7 @@ clientsRouter.post('/new', async (req,res,next) => {
       return res.status(400).json({ error: {message: 'Client already exists'}})
     }
 
-    client = new Client({
-      email: req.body.email,
-      password: req.body.password,
-    });
+    client = new Client(req.body);
 
     await client.updateToken();
 

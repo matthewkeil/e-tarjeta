@@ -36,7 +36,8 @@ export default ({
   inputClassName,
   warnClassName,
   errorClassName,
-  autoFocus
+  autoFocus,
+  ...custom
 }) => (
   <Field
     name={name}
@@ -45,14 +46,8 @@ export default ({
     inputClassName={inputClassName}
     warnClassName={warnClassName}
     errorClassName={errorClassName}
-    // passedClasses={{
-    //   inputClassName,
-    //   warnClassName,
-    //   errorClassName
-    // }}
     component={renderTextField}
     autoFocus={!!autoFocus}
-    // onKeyDown={catchEnter}
-    // onBlur={getTitleInfo(url)}
+    {...custom}
   />
 );
