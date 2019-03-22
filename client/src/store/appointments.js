@@ -1,10 +1,6 @@
 import axios from "axios";
-import { routerActions } from "connected-react-router";
+import config from './axiosConfig';
 
-const API_URL = process.env.API_URL || "http://localhost:4000";
-const headers = {
-  "Access-Control-Allow-Origin": "http://www.bougie.haus"
-};
 
 
 const ACTIONS = {
@@ -18,10 +14,18 @@ const getAppointments = payload => ({
   payload
 });
 
+const newAppointment = payload => ({
+  type: ACTIONS.NEW_APPOINTMENT,
+  payload
+});
+
 
 const actions = {
   attemptGetAppointments: () => dispatch => {
-    axios.get(`${API_URL}/appointments`)
+    axios(config({
+      method: 'get',
+      route: '/appointments'
+    }))
       .then(res => {
         dispatch(getAppointments(res.data));
         // dispatch(routerActions.push("/appointments"));
@@ -29,7 +33,16 @@ const actions = {
       .catch(err => console.log(err))
   },
   attemptNewAppointment: () => dispatch => {
-    axios.post(`${API_URL}/appointments`)
+    axios(config({
+      method: 'post',
+      route: '/appointments/new',
+      data: {
+        
+      }
+    }))
+      .then(res => {
+        dispatch()
+      })
   }
 
 };
@@ -44,7 +57,7 @@ export const appointmentsReducer = (state = [], action) => {
         case ACTIONS.GET_ALL_APPOINTMENTS:
             return [...action.payload.appointments];
         case ACTIONS.NEW_APPOINTMENT:
-          return {...state};
+          return { ...state, ...action.payload };
         default:
             return {...state}
     }

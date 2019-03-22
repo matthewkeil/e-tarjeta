@@ -1,12 +1,11 @@
 import axios from "axios";
 import { routerActions } from "connected-react-router";
-
-const API_URL = `${process.env.API_URL || "http://localhost:4000"}/providers`;
+import config from "./axiosConfig";
 
 const ACTIONS = {
   GET_PROVIDER_PROFILE_SUCCESS: "GET_PROVIDER_PROFILE_SUCCESS",
   REGISTER_PROVIDER_SUCCESS: "REGISTER_PROVIDER_SUCCESS",
-  LOGIN_PROVIDER_SUCCESS: 'LOGIN_PROVIDER_SUCCESS'
+  LOGIN_PROVIDER_SUCCESS: "LOGIN_PROVIDER_SUCCESS"
 };
 
 const getProviderProfileSuccess = payload => ({
@@ -26,41 +25,41 @@ const loginProviderSuccess = payload => ({
 
 const actions = {
   attemptGetProviderProfile: _id => dispatch => {
-    axios
-      .get(`${API_URL}/${_id}`)
+    axios(
+      config({
+        route: "/providers/" + _id,
+        method: "get"
+      })
+    )
       .then(res => {
         dispatch(getProviderProfileSuccess({ ...res.data }));
       })
       .catch(err => console.log(err));
   },
-  attemptRegisterProvider: ({ name, email, password, license }) => dispatch => {
-    axios
-      .post(`${API_URL}/new`, {
-        name,
-        email,
-        password,
-        license
+  attemptRegisterProvider: data => dispatch => {
+    axios(
+      config({
+        route: "/providers/new",
+        method: "post",
+        data
       })
+    )
       .then(res => {
         const _id = res.data._id;
-        dispatch(
-          registerProviderSuccess({ token: res.data.token, _id })
-        );
+        dispatch(registerProviderSuccess({ token: res.data.token, _id }));
         dispatch(routerActions.push(`/providers/${_id}`));
       })
       .catch(err => console.log(err));
   },
-  attemptLoginProvider: ({email, password}) => dispatch => {
-    axios
-      .post(`${API_URL}/login`, {
-        email,
-        password
-      })
+  attemptLoginProvider: data => dispatch => {
+    axios(config({
+      route: "/providers/login",
+      data,
+      method: "post"
+    }))
       .then(res => {
         const _id = res.data._id;
-        dispatch(
-          loginProviderSuccess({ token: res.data.token, _id })
-        );
+        dispatch(loginProviderSuccess({ token: res.data.token, _id }));
         dispatch(routerActions.push(`/providers/${_id}`));
       })
       .catch(err => console.log(err));
@@ -77,11 +76,11 @@ const INITIAL_STATE = {
 export const providersReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ACTIONS.GET_PROVIDER_PROFILE_SUCCESS:
-      return { ...state, profile: {...action.payload}};
+      return { ...state, profile: { ...action.payload } };
     case ACTIONS.REGISTER_PROVIDER_SUCCESS:
-      return {...state, registration: {...action.payload} };
+      return { ...state, registration: { ...action.payload } };
     case ACTIONS.LOGIN_PROVIDER_SUCCESS:
-      return {...state, registration: {...action.payload} };
+      return { ...state, registration: { ...action.payload } };
     default:
       return { ...state };
   }
