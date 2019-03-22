@@ -51,20 +51,39 @@ const Lander = (props) => {
     }
   }
   return (
-    <CardLayout>
-      <h1 style={{fontSize: '32px'}}>Perquin Medical Center</h1>
-      <Button variant='outlined' onClick={handleClick}>
-        Client Registration
-      </Button>
-      <Button variant='outlined' onClick={handleClick}>
-        Client Login
-      </Button>
-      <Button variant='outlined' onClick={handleClick}>
-        Provider Registration
-      </Button>
-      <Button variant='outlined' onClick={handleClick}>
-        Provider Login
-      </Button>
+    <CardLayout >
+      <h1 style={{fontSize: '32px', marginBottom: '1rem'}}>Perquin Medical Center</h1>
+      <div style={{display: 'flex', justifyContent: 'space-around'}}>
+        <div style={{display: 'flex', flexDirection:'column'}}>
+          <Button variant='outlined' onClick={handleClick} style={{margin: '0.5rem'}}>
+            Client Registration
+          </Button>
+          <Button variant='outlined' onClick={handleClick} style={{margin: '0.5rem'}}>
+            Client Login
+          </Button>
+        </div>
+        <div style={{display: 'flex', flexDirection:'column'}}>
+          <Button variant='outlined' onClick={handleClick} style={{margin: '0.5rem'}}>
+            Provider Registration
+          </Button>
+          <Button variant='outlined' onClick={handleClick} style={{margin: '0.5rem'}}>
+            Provider Login
+          </Button>
+        </div>
+        {/* <h1 style={{fontSize: '32px'}}>Perquin Medical Center</h1>
+        <Button variant='outlined' onClick={handleClick}>
+          Client Registration
+        </Button>
+        <Button variant='outlined' onClick={handleClick}>
+          Client Login
+        </Button>
+        <Button variant='outlined' onClick={handleClick}>
+          Provider Registration
+        </Button>
+        <Button variant='outlined' onClick={handleClick}>
+          Provider Login
+        </Button> */}
+      </div>
     </CardLayout>
   );
 }
