@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET || "Terrible_Jwt_Secret";
 
 const Schema = mongoose.Schema;
@@ -13,6 +13,7 @@ const clientSchema = new Schema({
   },
   password: {
     type: String,
+    select: false,
     required: true
   },
   /**
@@ -22,7 +23,62 @@ const clientSchema = new Schema({
    * all personal questions before their account is created.
    */
   token: String,
-  tokens: [String]
+  tokens: {
+    type: [String],
+    select: false
+  },
+  // general: {
+  nombre: String,
+  apellido: String,
+  domicilio: String,
+  localidad: String,
+  telefono: String,
+  fechaNacimiento: String,
+  etnia: String,
+  alfaBeta: String,
+  estudios: String,
+  estadoCivil: String,
+  viveSola: String,
+  lugarDelControlPrenatal: String,
+  lugarDelParto: String,
+  nombreIdentidad: String,
+  // },
+  // familiares: {
+  tbc: Boolean,
+  diabetes: Boolean,
+  hipertension: Boolean,
+  preeclampsia: Boolean,
+  eclampsia: Boolean,
+  otraCondicionMedicaGrave: Boolean,
+  // },
+  // personales: {
+  tbc: Boolean,
+  diabetes: Boolean,
+  hipertension: Boolean,
+  preeclampsia: Boolean,
+  eclampsia: Boolean,
+  otraCondicionMedicaGrave: Boolean,
+  cirugiaGenitoUrinaria: Boolean,
+  infertilidad: Boolean,
+  cardiopel: Boolean,
+  nefropatia: Boolean,
+  violencia: Boolean,
+  // },
+  // obstetricos: {
+  gestaasPrevias: String,
+  abortos: String,
+  tresConsecutivosAbortos: Boolean,
+  partos: String,
+  ultimoPrevio: String, // enum
+  antecedenteDeGemelares: Boolean,
+  vaginales: String,
+  cesareas: String,
+  nacidosMuertos: String,
+  nacidosVivos: String,
+  muertosPrimeraSemana: String,
+  muertosDespuesPrimeraSemana: String,
+  viven: String
+  // }
 });
 
 clientSchema.pre("save", async function(next) {
@@ -36,30 +92,25 @@ clientSchema.pre("save", async function(next) {
     client.password = hash;
 
     next();
-    
   } catch (err) {
     console.log(err);
   }
 });
 
 clientSchema.methods.validatePassword = function(password) {
-  console.log(password)
-  console.log(this.password)
   return bcrypt.compare(password, this.password);
-}
+};
 
 clientSchema.methods.hasValidToken = function() {
-  return !!this.token 
-    ? jwt.verify(this.token, JWT_SECRET)
-    : false;
-}
+  return !!this.token ? jwt.verify(this.token, JWT_SECRET) : false;
+};
 
 clientSchema.methods.updateToken = async function() {
-    if (this.token) this.tokens.push(this.token);
-   
-    this.token = await jwt.sign({_id: this._id}, JWT_SECRET);
-}
+  if (this.token) this.tokens.push(this.token);
 
-const Client =  mongoose.model("Client", clientSchema);
+  this.token = await jwt.sign({ _id: this._id }, JWT_SECRET);
+};
+
+const Client = mongoose.model("Client", clientSchema);
 
 module.exports = Client;

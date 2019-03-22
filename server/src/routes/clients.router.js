@@ -4,7 +4,7 @@ const {
   TYPES
 } = require("../../../client/src/components/clients/question_types");
 const { isLoggedIn } = require("../helpers");
-const Client = require('../models/Client');
+const Client = require("../models/Client");
 
 const QUESTIONS_LIST = [
   {
@@ -395,7 +395,7 @@ const QUESTIONS_LIST = [
     type: TYPES.TEXT,
     name: "repeatPassword",
     label: "Repeat Password"
-  },
+  }
 ];
 
 /**
@@ -406,71 +406,88 @@ const QUESTIONS_LIST = [
  *
  */
 
-clientsRouter.get("/new", (req, res, next) => {
-  res.json({ questions: QUESTIONS_LIST });
-  res.end();
-});
+clientsRouter
+  .route("/new")
+  .get((req, res, next) => {
+    res.json({ questions: QUESTIONS_LIST });
+    res.end();
+  })
+  .post(async (req, res, next) => {
+    try {
+      let client, existing;
 
-clientsRouter.post('/new', async (req,res,next) => {
-  try{
-    let client, existing;
+      if (req.body && req.body.email && req.body.password) {
+        existing = await Client.findOne({ email: req.body.email });
+      } else
+        return res
+          .status(400)
+          .json({ error: { message: "Email and password required" } });
 
-    if(req.body && req.body.email && req.body.password){
-      existing = await Client.findOne({email: req.body.email});
-    } else return res.status(400).json({error: {message: 'Email and password required'}})
+      if (!!existing) {
+        return res
+          .status(400)
+          .json({ error: { message: "Client already exists" } });
+      }
 
-    if(!!existing){
-      return res.status(400).json({ error: {message: 'Client already exists'}})
+      client = new Client(req.body);
+
+      await client.updateToken();
+
+      await client.save();
+
+      // const serialized = client.toJSON();
+
+      // delete serialized.password;
+      // delete serialized.tokens;
+
+      return res.status(201).json({ token: client.token, _id: client._id });
+    } catch (err) {
+      next(err);
     }
+  });
 
-    client = new Client(req.body);
+clientsRouter.post("/login", async (req, res, next) => {
+  try {
+    let client;
+
+    if (req.body && req.body.email) {
+      client = await Client.findOne({ email: req.body.email });
+    } else
+      return res
+        .status(403)
+        .send({ error: { message: "Invalid email or password" } });
+
+    if (
+      !client ||
+      (client && !(await client.validatePassword(req.body.password || "")))
+    ) {
+      return res
+        .status(403)
+        .send({ error: { message: "Invalid email or password" } });
+    }
 
     await client.updateToken();
 
     client.save();
-    
+
+    if (client.password) delete client.password;
+    // if (user._id) delete user._id;
+
     return res.status(201).json({
       token: client.token,
       _id: client._id
     });
-
-  } catch(err) {
+  } catch (err) {
     next(err);
   }
 });
 
-clientsRouter.post('/login', async (req, res, next) => {
-  try {
-      let client;
-
-      if (req.body && req.body.email) {
-          client = await Client.findOne( {email: req.body.email} );
-      } else return res.status(403).send({error: {message: 'Invalid email or password'}});
-
-      if (!client || (client && !(await client.validatePassword(req.body.password || '')))) {
-          return res.status(403).send({error: {message: 'Invalid email or password'}});
-      }
-
-      await client.updateToken();
-
-      client.save();
-
-      if (client.password) delete client.password;
-      // if (user._id) delete user._id;
-
-      return res.status(201).json({
-        token: client.token,
-        _id: client._id
-      });
-
-  } catch (err) {
-      next(err);
-  }
-});
-
-clientsRouter.get("/:id", isLoggedIn, (req, res, next) => {
-  const { id, email, name } = req.user;
-  const USER = { id, email, name };
+clientsRouter.route("/:id").get(isLoggedIn, (req, res, next) => {
+  
+  const USER = req.user.toJSON();
+  
+  delete USER.password;
+  delete USER.tokens;
 
   res.json(USER);
   res.end();

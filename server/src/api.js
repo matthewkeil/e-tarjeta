@@ -11,7 +11,6 @@ const jwt = require('jsonwebtoken');
 
 // const passport = require('./passport');
 const db = require('./db');
-const authRouter = require('./routes/auth.router');
 const appointmentRouter = require('./routes/appointments.router');
 const clientsRouter = require('./routes/clients.router');
 const providersRouter = require('./routes/providers.router');
@@ -68,12 +67,13 @@ api.use(async (req, res, next) => {
     let user;
 
     // user = await Clients.findByID(id);
+    // console.log(id, user._id)
 
     if (!user) { 
       // user = await Providers.findById(id);
     }
 
-    req.user = user;
+    req.user = id;
   }
 
   next();
