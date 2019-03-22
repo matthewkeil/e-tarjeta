@@ -1,42 +1,50 @@
 import axios from "axios";
-// import { routerActions } from "connected-react-router";
+import { routerActions } from "connected-react-router";
 
 const API_URL = process.env.API_URL || "http://localhost:4000";
+const headers = {
+  "Access-Control-Allow-Origin": "http://www.bougie.haus"
+};
 
-const GET_ALL_APPOINTMENTS = "GET_ALL_APPOINTMENTS";
-const POST = "POST";
 
-export const APPOINTMENT_ACTIONS = {
-  GET_ALL_APPOINTMENTS,
-  POST
+const ACTIONS = {
+  GET_ALL_APPOINTMENTS: 'GET_ALL_APPOINTMENTS',
+  NEW_APPOINTMENT: 'NEW_APPOINTMENT'
 }
 
 
-const getAppointments = appointments => ({
-  type: APPOINTMENT_ACTIONS.GET_ALL_APPOINTMENTS,
-  appointments
+const getAppointments = payload => ({
+  type: ACTIONS.GET_ALL_APPOINTMENTS,
+  payload
 });
 
-const attemptGetAppointments = dispatch => {
-  axios.get(`${API_URL}/appointments`)
-    .then(res => {
-      dispatch(getAppointments(res.data));
-      // dispatch(routerActions.push("/appointments"));
-    })
-    .catch(err => console.log(err))
-}
 
+const actions = {
+  attemptGetAppointments: () => dispatch => {
+    axios.get(`${API_URL}/appointments`)
+      .then(res => {
+        dispatch(getAppointments(res.data));
+        // dispatch(routerActions.push("/appointments"));
+      })
+      .catch(err => console.log(err))
+  },
+  attemptNewAppointment: () => dispatch => {
+    axios.post(`${API_URL}/appointments`)
+  }
 
-
-export const appointmentsActions = {
-  attemptGetAppointments,
-  getAppointments
 };
+
+
+
+
+export { actions as appointmentsActions, ACTIONS as APPOINTMENTS_ACTIONS };
 
 export const appointmentsReducer = (state = [], action) => {
     switch(action.type) {
-        case APPOINTMENT_ACTIONS.GET_ALL_APPOINTMENTS:
-            return [...action.appointments.appointments]
+        case ACTIONS.GET_ALL_APPOINTMENTS:
+            return [...action.payload.appointments];
+        case ACTIONS.NEW_APPOINTMENT:
+          return {...state};
         default:
             return {...state}
     }
