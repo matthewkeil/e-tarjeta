@@ -5,7 +5,8 @@ import config from "./axiosConfig";
 const ACTIONS = {
   GET_QUESTIONS_SUCCESS: "GET_QUESTIONS_SUCCESS",
   REGISTRATION_SUCCESS: "REGISTRATION_SUCCESS",
-  LOGIN_CLIENT_SUCCESS: "LOGIN_CLIENT_SUCCESS"
+  LOGIN_CLIENT_SUCCESS: "LOGIN_CLIENT_SUCCESS",
+  GET_CLIENT_PROFILE_SUCCESS: 'GET_CLIENT_PROFILE_SUCCESS'
 };
 
 const getQuestionsSuccess = payload => ({
@@ -20,6 +21,11 @@ const registrationSuccess = payload => ({
 
 const loginClientSuccess = payload => ({
   type: ACTIONS.LOGIN_CLIENT_SUCCESS,
+  payload
+});
+
+const getClientProfileSuccess = payload => ({
+  type: ACTIONS.GET_CLIENT_PROFILE_SUCCESS,
   payload
 });
 
@@ -62,14 +68,28 @@ const actions = {
         dispatch(routerActions.push(`/clients/${_id}`));
       })
       .catch(err => console.log(err));
-  }
+  },
+  attemptGetClientProfile: _id => dispatch => {
+    axios(
+      config({
+        route: "/clients/" + _id,
+        method: "get"
+      })
+    )
+      .then(res => {
+        dispatch(getClientProfileSuccess({ ...res.data }));
+      })
+      .catch(err => console.log(err));
+  },
 };
 
 export { actions as clientsActions, ACTIONS as CLIENTS_ACTIONS };
 
 const INITIAL_STATE = {
   questions: [],
-  types: {}
+  types: {},
+  registration: null,
+  profile: null
 };
 
 //DONT FORGET TO ADD A REGISTRATION_SUCCESS TO THE REDUCER BELOW
@@ -89,6 +109,11 @@ export const clientsReducer = (state = INITIAL_STATE, { type, payload }) => {
       };
     case ACTIONS.LOGIN_CLIENT_SUCCESS:
       return { ...state, registration: { ...payload } };
+    case ACTIONS.GET_CLIENT_PROFILE_SUCCESS:
+      return{
+        ...state,
+        profile: {...payload}
+      }
     default:
       return state;
   }
