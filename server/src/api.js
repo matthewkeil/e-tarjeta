@@ -16,6 +16,11 @@ const clientsRouter = require('./routes/clients.router');
 const providersRouter = require('./routes/providers.router');
 
 const PROD = process.env.NODE_ENV === 'production';
+const PROTOCOL = PROD ? "https" : "http";
+const HOST = process.env.HOST || "api-etarjeta.herokuapp.com";
+const PORT = process.env.PORT ? `:${process.env.PORT}` : "";
+const URL = `${PROTOCOL}://${HOST}${PORT}`;
+
 const SESSION_SECRET = process.env.SESSION_SECRET || 'Terrible_Session_Secret';
 const JWT_SECRET = process.env.JWT_SECRET || "very_bad_secret";
 
@@ -23,7 +28,7 @@ api.use(helmet());
 
 api.options('*', cors());
 api.use(cors({
-    origin: PROD ? '*' : /localhost/,
+    origin: URL,
     methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
     allowHeaders: [

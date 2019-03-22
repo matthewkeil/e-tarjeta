@@ -1,7 +1,6 @@
 import axios from "axios";
-// import { routerActions } from "connected-react-router";
+import config from './axiosConfig';
 
-const API_URL = process.env.API_URL || "http://localhost:4000";
 
 const GET_ALL_APPOINTMENTS = "GET_ALL_APPOINTMENTS";
 const POST = "POST";
@@ -11,14 +10,16 @@ export const APPOINTMENT_ACTIONS = {
   POST
 }
 
-
 const getAppointments = appointments => ({
   type: APPOINTMENT_ACTIONS.GET_ALL_APPOINTMENTS,
   appointments
 });
 
 const attemptGetAppointments = dispatch => {
-  axios.get(`${API_URL}/appointments`)
+  axios(config({
+    method: 'get',
+    route: '/appointments'
+  }))
     .then(res => {
       dispatch(getAppointments(res.data));
       // dispatch(routerActions.push("/appointments"));
