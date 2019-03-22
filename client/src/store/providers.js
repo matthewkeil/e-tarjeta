@@ -32,6 +32,7 @@ const actions = {
       })
     )
       .then(res => {
+        console.log(res.data);
         dispatch(getProviderProfileSuccess({ ...res.data }));
       })
       .catch(err => console.log(err));
