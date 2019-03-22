@@ -16,7 +16,7 @@ const providersRouter = require("./routes/providers.router");
 
 const PROD = process.env.NODE_ENV === "production";
 const PROTOCOL = "http";
-const HOST = process.env.HOST || "etarjeta.matthewkeil.com";
+const HOST = PROD ? "etarjeta.matthewkeil.com" : "localhost";
 const PORT = PROD ? "" : process.env.PORT;
 const URL = `${PROTOCOL}://${HOST}${PORT}`;
 
