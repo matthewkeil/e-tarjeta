@@ -43,8 +43,6 @@ clientSchema.pre("save", async function(next) {
 });
 
 clientSchema.methods.validatePassword = function(password) {
-  console.log(password)
-  console.log(this.password)
   return bcrypt.compare(password, this.password);
 }
 

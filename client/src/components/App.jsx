@@ -4,6 +4,7 @@ import { Notifier } from "./core";
 
 
 import NewClient from './clients/NewClient';
+import ClientLogin from './clients/ClientLogin';
 // import ClientProfile from './clients/ClientProfile';
 import NewProvider from './providers/NewProvider';
 import ProviderLogin from './providers/ProviderLogin';
@@ -19,6 +20,7 @@ const App = () => (
     <Notifier />
     <Switch>
       <Route path="/clients/new" component={NewClient} />
+      <Route path="/clients/login" component={ClientLogin} />
       {/* <Route path="/clients/:clientId" component={ClientProfile} /> */}
       <Route path="/providers/new" component={NewProvider} />
       <Route path="/providers/login" component={ProviderLogin} />

@@ -52,6 +52,7 @@ const Lander = (props) => {
   }
   return (
     <CardLayout>
+      <h1 style={{fontSize: '32px'}}>Perquin Medical Center</h1>
       <Button variant='outlined' onClick={handleClick}>
         Client Registration
       </Button>

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 import Paper from "@material-ui/core/Paper";
 
-import logo from '../../assets/logo-600-600.svg';
+import logo from '../../assets/usaid-logo.svg';
 
 import styles from "./CardLayout.module.scss";
 

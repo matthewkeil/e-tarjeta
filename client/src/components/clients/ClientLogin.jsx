@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { reduxForm, formValueSelector } from "redux-form";
 
-import { MedicalBag } from 'mdi-material-ui'
+import { MotherNurse } from 'mdi-material-ui'
 import { TextQuestion } from '../core';
 
 
@@ -48,20 +48,20 @@ const styles = theme => ({
 
 
 
-function ProviderLogin(props) {
+function ClientLogin(props) {
   const { classes, email, password } = props;
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.attemptLoginProvider({ email, password});
+    props.attemptLoginClient({ email, password});
   }
 
   return (
     <CardLayout>
         <Avatar className={classes.avatar} style={{margin: '0 auto 1rem auto'}}>
-          <MedicalBag />
+          <MotherNurse />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Existing Provider Login
+          Existing Client Login
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           {/* <FormControl margin="normal" required fullWidth>
@@ -93,7 +93,7 @@ function ProviderLogin(props) {
   );
 }
 
-const selector = formValueSelector('providerLogin');
+const selector = formValueSelector('clientLogin');
 
 function mapStateToProps(state) {
   return {
@@ -104,8 +104,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    attemptLoginProvider: ({email, password}) => dispatch(ACT.providers.attemptLoginProvider({email, password}))
+    attemptLoginClient: ({email, password}) => dispatch(ACT.clients.attemptLoginClient({email, password}))
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({form: 'providerLogin'})(withStyles(styles)(ProviderLogin)));
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({form: 'clientLogin'})(withStyles(styles)(ClientLogin)));
