@@ -6,6 +6,10 @@ const JWT_SECRET = process.env.JWT_SECRET || "Terrible_Jwt_Secret";
 const Schema = mongoose.Schema;
 
 const providerSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true,

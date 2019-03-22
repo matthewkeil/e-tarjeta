@@ -6,9 +6,13 @@ import { Notifier } from "./core";
 import NewClient from './clients/NewClient';
 // import ClientProfile from './clients/ClientProfile';
 import NewProvider from './providers/NewProvider';
+import ProviderLogin from './providers/ProviderLogin';
 import ProviderProfile from './providers/ProviderProfile';
 
+import Lander from "./lander/Lander";
+
 import styles from "./App.module.scss";
+
 
 const App = () => (
   <div className={styles.container}>
@@ -17,9 +21,11 @@ const App = () => (
       <Route path="/clients/new" component={NewClient} />
       {/* <Route path="/clients/:clientId" component={ClientProfile} /> */}
       <Route path="/providers/new" component={NewProvider} />
+      <Route path="/providers/login" component={ProviderLogin} />
       <Route path="/providers/:providerId" component={ProviderProfile} />
       {/* <Route path="/clients/:clientId/appointments" component={ClientAppointments} /> */}
       {/* <Route path="/clients/:clientId/appointments/new" component={NewAppointment} /> */}
+      <Route path='/' exact component={Lander}/>
     </Switch>
   </div>
 );

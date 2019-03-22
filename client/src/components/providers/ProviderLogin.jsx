@@ -48,11 +48,11 @@ const styles = theme => ({
 
 
 
-function ProviderRegister(props) {
-  const { classes, name, email, password, license } = props;
+function ProviderLogin(props) {
+  const { classes, email, password } = props;
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.attemptRegisterProvider({name, email, password, license});
+    props.attemptLoginProvider({ email, password});
   }
 
   return (
@@ -62,7 +62,7 @@ function ProviderRegister(props) {
           <MedicalBag />
         </Avatar>
         <Typography component="h1" variant="h5">
-          New Provider Registration
+          Existing Provider Login
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           {/* <FormControl margin="normal" required fullWidth>
@@ -77,10 +77,8 @@ function ProviderRegister(props) {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           /> */}
-          <TextQuestion name={'name'} label={'Full Name'} fullWidth/>
           <TextQuestion name={'email'} label={'Email'} fullWidth/>
           <TextQuestion name={'password'} label={'Password'} fullWidth/>
-          <TextQuestion name={'license'} label={'Medical License ID'} fullWidth/>
           <Button
             type="submit"
             fullWidth
@@ -88,7 +86,7 @@ function ProviderRegister(props) {
             color="primary"
             className={classes.submit}
           >
-            Register
+            Login
           </Button>
         </form>
       </Paper>
@@ -96,21 +94,19 @@ function ProviderRegister(props) {
   );
 }
 
-const selector = formValueSelector('providerRegister');
+const selector = formValueSelector('providerLogin');
 
 function mapStateToProps(state) {
   return {
-    name: selector(state, 'name'),
     email: selector(state, 'email'),
     password: selector(state, 'password'),
-    license: selector(state, 'license')
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    attemptRegisterProvider: ({name, email, password, license}) => dispatch(ACT.providers.attemptRegisterProvider({name, email, password, license}))
+    attemptLoginProvider: ({email, password}) => dispatch(ACT.providers.attemptLoginProvider({email, password}))
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({form: 'providerRegister'})(withStyles(styles)(ProviderRegister)));
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({form: 'providerLogin'})(withStyles(styles)(ProviderLogin)));
