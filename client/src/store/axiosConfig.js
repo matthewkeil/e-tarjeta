@@ -1,7 +1,7 @@
 const PROD = process.env.NODE_ENV === 'production'
 const PROTOCOL = PROD ? "https" : "http";
-const HOST = process.env.HOST || "api-etarjeta.herokuapp.com";
-const PORT = process.env.PORT ? `:${process.env.PORT}` : "";
+const HOST = PROD ? "api-etarjeta.herokuapp.com" : 'localhost';
+const PORT = PROD ? "" : `:${process.env.PORT || 4000}`;
 const URL = `${PROTOCOL}://${HOST}${PORT}`;
 
 export default ({route, method, data}) => ({
