@@ -24,6 +24,7 @@ const Register = ({ questions, attemptGetQuestions, handleSubmit }) => {
 
   return !questions.length ? null : (
     <CardLayout>
+      <h1>Registracion</h1>
       <form onSubmit={handleSubmit}>
         {questions.map(({ id, type, name, label, answers }) => {
           const questionProps = {
@@ -51,9 +52,9 @@ const Register = ({ questions, attemptGetQuestions, handleSubmit }) => {
         })}
         <div className={styles.actions}>
           <Button className={styles.buttons}>cancel</Button>
-          <Button variant="contained" className={styles.buttons}>
+          {/* <Button variant="contained" className={styles.buttons}>
             skip
-          </Button>
+          </Button> */}
           <div className={styles.spacer} />
           <Button
             type="submit"
