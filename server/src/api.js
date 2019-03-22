@@ -17,7 +17,7 @@ const providersRouter = require("./routes/providers.router");
 const PROD = process.env.NODE_ENV === "production";
 const PROTOCOL = "http";
 const HOST = PROD ? "etarjeta.matthewkeil.com" : "localhost";
-const PORT = PROD ? "" : process.env.PORT;
+const PORT = PROD ? "" : `:3000`;
 const URL = `${PROTOCOL}://${HOST}${PORT}`;
 
 const SESSION_SECRET = process.env.SESSION_SECRET || "Terrible_Session_Secret";
