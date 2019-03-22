@@ -73,10 +73,11 @@ providersRouter.post('/new', async (req,res,next) => {
     } else return res.status(400).json({error: {message: 'Email and password required'}})
 
     if(!!existing){
-      return res.status(400).json({ error: {message: 'Provider already exists'}})
+      return res.status(400).json({ error: {message: 'Email already in use'}})
     }
 
     provider = new Provider({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       license: req.body.license
@@ -133,7 +134,7 @@ providersRouter.get('/:providerId', (req,res,next) => {
   const id = req.params.providerId;
   Provider.findById(id)
     .then(provider => {
-      res.status(200).json({provider});
+      res.status(200).json(provider);
     })
     .catch(err => console.log(err));
 
