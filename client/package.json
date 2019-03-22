@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
+    "prod": "npm run build && npm run deploy",
     "build": "node -r dotenv/config node_modules/.bin/react-scripts build",
     "deploy": "gsutil -m cp -r build/* gs://etarjeta.matthewkeil.com",
     "test": "react-scripts test",
