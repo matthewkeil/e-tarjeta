@@ -113,20 +113,20 @@ providersRouter.post('/new', async (req,res,next) => {
 //   );
 // });
 
-providersRouter.get(
-  "/login/google",
-  passport.authenticate("google", {
-    scope: ["email", "profile", "openid"],
-  })
-);
+// providersRouter.get(
+//   "/login/google",
+//   passport.authenticate("google", {
+//     scope: ["email", "profile", "openid"],
+//   })
+// );
 
-providersRouter.get("/login/google/callback", async (req, res, next) => {
-  passport.authenticate("google", handlePassportResponse(req, res, next))(
-    req,
-    res,
-    next
-  );
-});
+// providersRouter.get("/login/google/callback", async (req, res, next) => {
+//   passport.authenticate("google", handlePassportResponse(req, res, next))(
+//     req,
+//     res,
+//     next
+//   );
+// });
 
 providersRouter.get('/:providerId', (req,res,next) => {
   
@@ -136,10 +136,6 @@ providersRouter.get('/:providerId', (req,res,next) => {
       res.status(200).json(provider);
     })
     .catch(err => console.log(err));
-  
-  
-
-
 });
 
 module.exports = providersRouter;
