@@ -11,7 +11,7 @@ class ProviderProfile extends Component {
   }
 
   render(){
-    return !this.props.providers.profile ? 
+    return !this.props.providers.profile.name ? 
       null : (
       <CardLayout>
         <p>FULL NAME: {this.props.providers.profile.name.toUpperCase()}</p>

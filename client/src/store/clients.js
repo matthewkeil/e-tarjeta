@@ -51,7 +51,11 @@ const actions = {
       })
     ).then(({ data }) => {
       dispatch(registrationSuccess(data));
-      dispatch(routerActions.push("/clients/" + data._id));
+      //Async problem causing provider to not be saved before attempted retrieval upon componentDidMount in ProviderProfile? 
+      //We are rarely receiving null (i.e. profile not found) from the server right after first creation and attempted search for profile.
+      setTimeout(() => {
+        dispatch(routerActions.push("/clients/" + data._id));
+      }, 500)
     });
   },
   attemptLoginClient: data => dispatch => {

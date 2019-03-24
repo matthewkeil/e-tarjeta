@@ -136,6 +136,8 @@ providersRouter.get('/:providerId', (req,res,next) => {
       res.status(200).json(provider);
     })
     .catch(err => console.log(err));
+  
+  
 
 
 });
