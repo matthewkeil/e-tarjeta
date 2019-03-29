@@ -11,28 +11,28 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import { reduxForm, formValueSelector } from "redux-form";
 
 import { MedicalBag } from 'mdi-material-ui'
-import { TextQuestion } from '../core';
+import { TextQuestion, CardLayout } from '../core';
 
 
 const styles = theme => ({
-  main: {
-    width: 'auto',
-    display: 'block', // Fix IE 11 issue.
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-      width: 400,
-      marginLeft: 'auto',
-      marginRight: 'auto',
-    },
-  },
-  paper: {
-    marginTop: theme.spacing.unit * 8,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-  },
+  // main: {
+  //   width: 'auto',
+  //   display: 'block', // Fix IE 11 issue.
+  //   marginLeft: theme.spacing.unit * 3,
+  //   marginRight: theme.spacing.unit * 3,
+  //   [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+  //     width: 400,
+  //     marginLeft: 'auto',
+  //     marginRight: 'auto',
+  //   },
+  // },
+  // paper: {
+  //   marginTop: theme.spacing.unit * 8,
+  //   display: 'flex',
+  //   flexDirection: 'column',
+  //   alignItems: 'center',
+  //   padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
+  // },
   avatar: {
     margin: theme.spacing.unit,
     backgroundColor: theme.palette.secondary.main,
@@ -56,9 +56,8 @@ function ProviderRegister(props) {
   }
 
   return (
-    <main className={classes.main}>
-      <Paper className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <CardLayout>
+        <Avatar className={classes.avatar} style={{margin: '0 auto 0.5rem auto'}}>
           <MedicalBag />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -87,12 +86,12 @@ function ProviderRegister(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            style={{marginBottom: '1rem'}}
           >
             Register
           </Button>
         </form>
-      </Paper>
-    </main>
+      </CardLayout>
   );
 }
 

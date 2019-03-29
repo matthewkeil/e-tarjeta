@@ -11,7 +11,7 @@ const QUESTIONS_LIST = [
     id: 1,
     type: TYPES.TEXT,
     name: "nomber",
-    label: "Nobre"
+    label: "Nombre"
   },
   {
     id: 2,
